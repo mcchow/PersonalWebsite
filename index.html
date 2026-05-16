@@ -1,255 +1,308 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sheung Him Martin Chow | Software & Graphics Developer</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Martin Chow | Software & Graphics Developer</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<body>
-  <div class="page">
+  <body>
+    <div class="page">
+      <!-- HEADER -->
+      <header>
+        <div class="hero-name">Sheung Him Martin Chow</div>
+        <div class="hero-title-large">Software & Graphics Developer</div>
 
-    <!-- HEADER -->
-    <header>
-      <div class="hero-name">Sheung Him Martin Chow</div>
-      <div class="hero-title-large">Software & Graphics Developer</div>
-
-      <div class="nav-links-center">
-        <a href="index.html#projects">Projects</a>
-        <a href="index.html#about">About</a>
-        <a href="index.html#contact">Contact</a>
-        <a href="Resume.pdf" target="_blank" rel="noopener">Resume</a>
-      </div>
-    </header>
-
-    <main>
-
-      <!-- HERO -->
-      <section class="section hero" id="home">
-        <div>
-          <h1 class="hero-title">
-            Creating <span class="hero-highlight">interactive systems</span> and building <span class="hero-highlight">real‑time graphics tools</span> from the ground up.
-          </h1>
-
-          <p class="hero-subtitle">
-            I’m a software developer focused on graphics, engine architecture, and gameplay‑driven tools.  
-            I enjoy building systems that are fast, reliable, and empower designers and artists to iterate freely.
-          </p>
-
-          <div class="hero-tags">
-            <span class="tag">C++</span>
-            <span class="tag">Graphics</span>
-            <span class="tag">Rendering</span>
-            <span class="tag">Engine Systems</span>
-            <span class="tag">Tools</span>
-            <span class="tag">Lua</span>
-          </div>
-
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#projects">View Projects</a>
-            <a class="btn" href="Resume.pdf" target="_blank" rel="noopener">Download Resume</a>
-          </div>
+        <div class="nav-links-center">
+          <a href="index.html#projects">Projects</a>
+          <a href="index.html#about">About</a>
+          <a href="index.html#contact">Contact</a>
+          <a href="Resume.pdf" target="_blank" rel="noopener">Resume</a>
         </div>
+      </header>
 
-        <aside class="hero-right">
-          <div class="hero-right-title">Currently</div>
-          <div class="hero-right-main">
-            Seeking software, graphics, or engine programming roles in the US.
-          </div>
+      <main>
+        <!-- HERO -->
+        <section class="section hero" id="home">
+          <div>
+            <h1 class="hero-title">
+              Building <span class="hero-highlight">real‑time systems</span> and
+              creating
+              <span class="hero-highlight">graphics‑driven tools</span> for
+              modern games.
+            </h1>
 
-          <ul class="hero-right-list">
-            <li>• LuareEye Engine — custom engine with rendering, animation, and editor tools</li>
-            <li>• Color Puzzle World — 3D puzzle game with Lua scripting and physics</li>
-            <li>• Open to internships, junior, and full‑time opportunities</li>
-          </ul>
-        </aside>
-      </section>
+            <p class="hero-subtitle">
+              I’m a C++ developer with experience in graphics programming,
+              engine architecture, and gameplay‑supporting tools. I enjoy
+              working on rendering features, animation systems, and editor
+              workflows that help teams iterate quickly and bring ideas to life.
+            </p>
 
-      <!-- PROJECTS -->
-      <section class="section" id="projects">
-        <h2 class="section-title">Projects</h2>
+            <div class="hero-tags">
+              <span class="tag">C++</span>
+              <span class="tag">Graphics</span>
+              <span class="tag">Rendering</span>
+              <span class="tag">Engine Systems</span>
+              <span class="tag">Tools</span>
+              <span class="tag">Animation</span>
+              <span class="tag">Lua</span>
+            </div>
 
-        <div class="category-filters">
-          <button class="filter-btn active" data-category="all">All Projects</button>
-          <button class="filter-btn" data-category="engine">Engine</button>
-          <button class="filter-btn" data-category="graphics">Graphics</button>
-          <button class="filter-btn" data-category="animation">Animation</button>
-          <button class="filter-btn" data-category="physics">Physics</button>
-          <button class="filter-btn" data-category="gameplay">Gameplay</button>
-        </div>
-
-        <div class="carousel-container">
-          <button class="carousel-btn prev-btn" id="prevBtn">‹</button>
-
-          <div class="carousel-track-container">
-            <div class="carousel-track" id="carouselTrack">
-              <!-- JS injects project cards -->
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#projects">View Projects</a>
+              <a class="btn" href="Resume.pdf" target="_blank" rel="noopener"
+                >Download Resume</a
+              >
             </div>
           </div>
 
-          <button class="carousel-btn next-btn" id="nextBtn">›</button>
-        </div>
+          <aside class="hero-right">
+            <div class="hero-right-title">Currently</div>
 
-        <div class="carousel-indicators" id="carouselIndicators"></div>
-      </section>
-
-      <!-- ABOUT -->
-      <section class="section" id="about">
-        <h2 class="section-title">About Me</h2>
-
-        <div class="about-grid">
-          <div class="about-text">
-            <p>
-            I’m a developer who enjoys working close to the metal—building rendering systems, engine features, and tools that support real‑time interaction.
-            </p>
-
-            <p>
-              Before focusing on graphics and engine development, I worked on the SQL Performance Team at Microsoft, where I built automated TPCH/TPCE benchmarking systems, maintained cross‑platform (Windows/Linux) test kits, and optimized multithreaded performance pipelines on Skylake‑class CPUs. That experience shaped how I think about reliability, profiling, and scalable system design.
-            </p>
-
-            <p>
-              Today, I apply those principles to real‑time graphics and engine programming: writing clean, maintainable C++ and designing systems that scale as projects grow. I care deeply about performance, clarity, and giving teams the tools they need to iterate quickly.
-            </p>
-
-            <p>
-              I’m looking for opportunities where I can contribute to core technology while learning from experienced engineers and pushing my technical boundaries.
-            </p>
-
-          </div>
-
-          <aside class="about-box">
-            <h3>Skills & Focus</h3>
-
-            <div class="skills-list">
-              <span class="skill-pill">C++</span>
-              <span class="skill-pill">Graphics Programming</span>
-              <span class="skill-pill">Rendering Pipelines</span>
-              <span class="skill-pill">OpenGL / GLSL</span>
-              <span class="skill-pill">Engine Architecture</span>
-              <span class="skill-pill">Animation Systems</span>
-              <span class="skill-pill">Lua Scripting</span>
-              <span class="skill-pill">Physics Integration</span>
-              <span class="skill-pill">IMGUI Tools</span>
-              <span class="skill-pill">Multithreading</span>
+            <div class="hero-right-main">
+              Open to roles in graphics, engine, tools, or gameplay‑related
+              programming.
             </div>
+
+            <ul class="hero-right-list">
+              <li>
+                • LuareEye Engine — custom C++ engine with rendering, animation,
+                and editor tooling
+              </li>
+              <li>
+                • Color Puzzle World — 3D puzzle game with Lua scripting,
+                physics, and engine features
+              </li>
+              <li>
+                • Seeking internships, junior, or full‑time opportunities in
+                game development
+              </li>
+            </ul>
           </aside>
+        </section>
+
+        <!-- PROJECTS -->
+        <section class="section" id="projects">
+          <h2 class="section-title">Projects</h2>
+
+          <div class="category-filters">
+            <button class="filter-btn active" data-category="all">
+              All Projects
+            </button>
+            <button class="filter-btn" data-category="engine">Engine</button>
+            <button class="filter-btn" data-category="graphics">
+              Graphics
+            </button>
+            <button class="filter-btn" data-category="animation">
+              Animation
+            </button>
+            <button class="filter-btn" data-category="physics">Physics</button>
+            <button class="filter-btn" data-category="gameplay">
+              Gameplay
+            </button>
+          </div>
+
+          <div class="carousel-container">
+            <button class="carousel-btn prev-btn" id="prevBtn">‹</button>
+
+            <div class="carousel-track-container">
+              <div class="carousel-track" id="carouselTrack">
+                <!-- JS injects project cards -->
+              </div>
+            </div>
+
+            <button class="carousel-btn next-btn" id="nextBtn">›</button>
+          </div>
+
+          <div class="carousel-indicators" id="carouselIndicators"></div>
+        </section>
+
+        <!-- ABOUT -->
+        <section class="section" id="about">
+          <h2 class="section-title">About Me</h2>
+
+          <div class="about-grid">
+            <div class="about-text">
+              <p>
+                I’m a developer who enjoys working close to the metal—building
+                rendering systems, engine features, and tools that support
+                real‑time interaction.
+              </p>
+
+              <p>
+                Before focusing on graphics and engine development, I worked on
+                the SQL Performance Team at Microsoft, where I built automated
+                TPCH/TPCE benchmarking systems, maintained cross‑platform
+                (Windows/Linux) test kits, and optimized multithreaded
+                performance pipelines on Skylake‑class CPUs. That experience
+                shaped how I think about reliability, profiling, and scalable
+                system design.
+              </p>
+
+              <p>
+                Today, I apply those principles to real‑time graphics and engine
+                programming: writing clean, maintainable C++ and designing
+                systems that scale as projects grow. I care deeply about
+                performance, clarity, and giving teams the tools they need to
+                iterate quickly.
+              </p>
+
+              <p>
+                I’m looking for opportunities where I can contribute to core
+                technology while learning from experienced engineers and pushing
+                my technical boundaries.
+              </p>
+            </div>
+
+            <aside class="about-box">
+              <h3>Skills & Focus</h3>
+
+              <div class="skills-list">
+                <span class="skill-pill">C++</span>
+                <span class="skill-pill">Graphics Programming</span>
+                <span class="skill-pill">Rendering Pipelines</span>
+                <span class="skill-pill">OpenGL / GLSL</span>
+                <span class="skill-pill">Engine Architecture</span>
+                <span class="skill-pill">Animation Systems</span>
+                <span class="skill-pill">Lua Scripting</span>
+                <span class="skill-pill">Physics Integration</span>
+                <span class="skill-pill">IMGUI Tools</span>
+                <span class="skill-pill">Multithreading</span>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="section" id="contact">
+          <h2 class="section-title">Contact</h2>
+
+          <div class="contact-card">
+            <div class="contact-title">Let’s connect.</div>
+
+            <p class="contact-text">
+              If you're looking for someone who enjoys building graphics
+              systems, tools, and gameplay‑focused tech, I’d love to talk.
+            </p>
+
+            <button class="contact-email" id="copyEmailBtn" type="button">
+              <span id="emailText">chowmartin387@gmail.com</span>
+              <span>⧉</span>
+            </button>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div class="footer-inner">
+          <div>
+            © <span id="year"></span> Sheung Him Martin Chow. All rights
+            reserved.
+          </div>
+
+          <div class="footer-links">
+            <a
+              href="https://github.com/YOUR_GITHUB"
+              target="_blank"
+              rel="noopener"
+              >GitHub</a
+            >
+            <a
+              href="https://www.linkedin.com/in/YOUR_LINKEDIN"
+              target="_blank"
+              rel="noopener"
+              >LinkedIn</a
+            >
+          </div>
         </div>
-      </section>
+      </footer>
+    </div>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
 
-      <!-- CONTACT -->
-      <section class="section" id="contact">
-        <h2 class="section-title">Contact</h2>
+      const copyBtn = document.getElementById("copyEmailBtn");
+      const emailSpan = document.getElementById("emailText");
 
-        <div class="contact-card">
-          <div class="contact-title">Let’s connect.</div>
+      copyBtn.addEventListener("click", async () => {
+        const email = emailSpan.textContent.trim();
+        try {
+          await navigator.clipboard.writeText(email);
+          const original = emailSpan.textContent;
+          emailSpan.textContent = "Copied!";
+          setTimeout(() => (emailSpan.textContent = original), 1200);
+        } catch (e) {
+          alert("Email: " + email);
+        }
+      });
 
-          <p class="contact-text">
-            If you're looking for someone who enjoys building graphics systems, tools, and gameplay‑focused tech, I’d love to talk.
-          </p>
+      // Projects Data
+      const projectsData = [
+        {
+          id: "luareeye",
+          name: "LuareEye Engine - Bounce Back",
+          year: "2025",
+          role: "Engine & Tools Developer",
+          type: "Custom 3D Engine - 3D Action Game",
+          category: "engine",
+          shortDesc:
+            "A game using custom 3D engine with modern rendering pipeline, real‑time animation system, editor tooling, and spatial audio.",
+          techStack: "C++, OpenGL, GLSL, IMGUI, Bullet Physics",
+          image: "images/luareeye.png",
+        },
+        {
+          id: "colorpuzzle",
+          name: "Juniper Engine - Color Puzzle World",
+          year: "2025",
+          role: "Engine & Tools Developer",
+          type: "Custom 3D Engine - 3D Puzzle Game",
+          category: "engine",
+          shortDesc:
+            "3D puzzle adventure with skeletal animation, dynamic lighting, Jolt physics, multithreading, and Lua scripting.",
+          techStack: "C++, Lua, OpenGL, GLSL, Jolt Physics",
+          image: "images/colorpuzzle.png",
+        },
+        {
+          id: "physics-engine",
+          name: "Custom Physics Engine",
+          year: "2024",
+          role: "Physics Programmer",
+          type: "Physics Simulation",
+          category: "physics",
+          shortDesc:
+            "Real-time physics engine with rigid body dynamics, collision detection, and numerical integration.",
+          techStack: "C++, OpenGL, GLM, IMGUI",
+          image: "images/physics-engine.png",
+        },
+      ];
 
-          <button class="contact-email" id="copyEmailBtn" type="button">
-            <span id="emailText">chowmartin387@gmail.com</span>
-            <span>⧉</span>
-          </button>
-        </div>
-      </section>
+      // Carousel variables
+      let currentIndex = 0;
+      let currentCategory = "all";
+      let filteredProjects = [...projectsData];
+      let slidesToShow = 1;
 
-    </main>
+      // DOM elements
+      const track = document.getElementById("carouselTrack");
+      const prevBtn = document.getElementById("prevBtn");
+      const nextBtn = document.getElementById("nextBtn");
+      const indicatorsContainer = document.getElementById("carouselIndicators");
+      const filterButtons = document.querySelectorAll(".filter-btn");
 
-    <footer>
-      <div class="footer-inner">
-        <div>© <span id="year"></span> Sheung Him Martin Chow. All rights reserved.</div>
-
-        <div class="footer-links">
-          <a href="https://github.com/YOUR_GITHUB" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener">LinkedIn</a>
-        </div>
-      </div>
-    </footer>
-
-  </div>
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    const copyBtn = document.getElementById("copyEmailBtn");
-    const emailSpan = document.getElementById("emailText");
-
-    copyBtn.addEventListener("click", async () => {
-      const email = emailSpan.textContent.trim();
-      try {
-        await navigator.clipboard.writeText(email);
-        const original = emailSpan.textContent;
-        emailSpan.textContent = "Copied!";
-        setTimeout(() => (emailSpan.textContent = original), 1200);
-      } catch (e) {
-        alert("Email: " + email);
+      function updateSlidesToShow() {
+        if (window.innerWidth >= 1200) slidesToShow = 3;
+        else if (window.innerWidth >= 800) slidesToShow = 2;
+        else slidesToShow = 1;
       }
-    });
 
-    // Projects Data
-    const projectsData = [
-      {
-        id: "luareeye",
-        name: "LuareEye Engine - Bounce Back",
-        year: "2025",
-        role: "Engine & Tools Developer",
-        type: "Custom 3D Engine - 3D Action Game",
-        category: "engine",
-        shortDesc: "A game using custom 3D engine with modern rendering pipeline, real‑time animation system, editor tooling, and spatial audio.",
-        techStack: "C++, OpenGL, GLSL, IMGUI, Bullet Physics",
-        image: "images/luareeye.png"
-      },
-      {
-        id: "colorpuzzle",
-        name: "Juniper Engine - Color Puzzle World",
-        year: "2025",
-        role: "Engine & Tools Developer",
-        type: "Custom 3D Engine - 3D Puzzle Game",
-        category: "engine",
-        shortDesc: "3D puzzle adventure with skeletal animation, dynamic lighting, Jolt physics, multithreading, and Lua scripting.",
-        techStack: "C++, Lua, OpenGL, GLSL, Jolt Physics",
-        image: "images/colorpuzzle.png"
-      },
-      {
-        id: "physics-engine",
-        name: "Custom Physics Engine",
-        year: "2024",
-        role: "Physics Programmer",
-        type: "Physics Simulation",
-        category: "physics",
-        shortDesc: "Real-time physics engine with rigid body dynamics, collision detection, and numerical integration.",
-        techStack: "C++, OpenGL, GLM, IMGUI",
-        image: "images/physics-engine.png"
-      }
-    ];
+      function renderCarousel() {
+        let html = "";
 
-    // Carousel variables
-    let currentIndex = 0;
-    let currentCategory = "all";
-    let filteredProjects = [...projectsData];
-    let slidesToShow = 1;
+        for (let i = 0; i < filteredProjects.length; i++) {
+          const p = filteredProjects[i];
 
-    // DOM elements
-    const track = document.getElementById("carouselTrack");
-    const prevBtn = document.getElementById("prevBtn");
-    const nextBtn = document.getElementById("nextBtn");
-    const indicatorsContainer = document.getElementById("carouselIndicators");
-    const filterButtons = document.querySelectorAll(".filter-btn");
-
-    function updateSlidesToShow() {
-      if (window.innerWidth >= 1200) slidesToShow = 3;
-      else if (window.innerWidth >= 800) slidesToShow = 2;
-      else slidesToShow = 1;
-    }
-
-    function renderCarousel() {
-      let html = "";
-      
-      for (let i = 0; i < filteredProjects.length; i++) {
-        const p = filteredProjects[i];
-        
-        html += `
+          html += `
           <div class="carousel-slide">
             <div class="project-card-large">
               <div class="project-image-preview" style="background: linear-gradient(135deg, #1a202c, #0f172a);">
@@ -260,88 +313,94 @@
                 <div class="project-badge ${p.category}">${p.category.charAt(0).toUpperCase() + p.category.slice(1)}</div>
                 <p class="project-short-desc">${p.shortDesc}</p>
                 <div class="project-tech-stack">
-                  ${p.techStack.split(',').slice(0, 3).map(tech => `<span>${tech.trim()}</span>`).join('')}
+                  ${p.techStack
+                    .split(",")
+                    .slice(0, 3)
+                    .map((tech) => `<span>${tech.trim()}</span>`)
+                    .join("")}
                 </div>
                 <a href="project-${p.id}.html" class="view-project-btn">View Details →</a>
               </div>
             </div>
           </div>
         `;
-      }
-      
-      track.innerHTML = html;
-      updateCarouselPosition();
-      updateIndicators();
-    }
+        }
 
-    function updateCarouselPosition() {
-      const slideWidth = track.children[0]?.offsetWidth || 0;
-      track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-    }
-
-    function updateIndicators() {
-      const totalPages = Math.ceil(filteredProjects.length / slidesToShow);
-      let indicatorsHtml = "";
-      for (let i = 0; i < totalPages; i++) {
-        indicatorsHtml += `<button class="indicator ${i === currentIndex ? 'active' : ''}" data-index="${i}"></button>`;
+        track.innerHTML = html;
+        updateCarouselPosition();
+        updateIndicators();
       }
-      indicatorsContainer.innerHTML = indicatorsHtml;
-      
-      document.querySelectorAll(".indicator").forEach(ind => {
-        ind.addEventListener("click", () => {
-          currentIndex = parseInt(ind.getAttribute("data-index"));
+
+      function updateCarouselPosition() {
+        const slideWidth = track.children[0]?.offsetWidth || 0;
+        track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+      }
+
+      function updateIndicators() {
+        const totalPages = Math.ceil(filteredProjects.length / slidesToShow);
+        let indicatorsHtml = "";
+        for (let i = 0; i < totalPages; i++) {
+          indicatorsHtml += `<button class="indicator ${i === currentIndex ? "active" : ""}" data-index="${i}"></button>`;
+        }
+        indicatorsContainer.innerHTML = indicatorsHtml;
+
+        document.querySelectorAll(".indicator").forEach((ind) => {
+          ind.addEventListener("click", () => {
+            currentIndex = parseInt(ind.getAttribute("data-index"));
+            updateCarouselPosition();
+            updateIndicators();
+          });
+        });
+      }
+
+      function nextSlide() {
+        const totalPages = Math.ceil(filteredProjects.length / slidesToShow);
+        if (currentIndex + 1 < totalPages) {
+          currentIndex++;
           updateCarouselPosition();
           updateIndicators();
+        }
+      }
+
+      function prevSlide() {
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateCarouselPosition();
+          updateIndicators();
+        }
+      }
+
+      function filterProjects(category) {
+        currentCategory = category;
+        if (category === "all") {
+          filteredProjects = [...projectsData];
+        } else {
+          filteredProjects = projectsData.filter(
+            (p) => p.category === category,
+          );
+        }
+        currentIndex = 0;
+        renderCarousel();
+      }
+
+      prevBtn.addEventListener("click", prevSlide);
+      nextBtn.addEventListener("click", nextSlide);
+      window.addEventListener("resize", () => {
+        updateSlidesToShow();
+        renderCarousel();
+      });
+
+      filterButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          filterButtons.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          const category = btn.getAttribute("data-category");
+          filterProjects(category);
         });
       });
-    }
 
-    function nextSlide() {
-      const totalPages = Math.ceil(filteredProjects.length / slidesToShow);
-      if (currentIndex + 1 < totalPages) {
-        currentIndex++;
-        updateCarouselPosition();
-        updateIndicators();
-      }
-    }
-
-    function prevSlide() {
-      if (currentIndex > 0) {
-        currentIndex--;
-        updateCarouselPosition();
-        updateIndicators();
-      }
-    }
-
-    function filterProjects(category) {
-      currentCategory = category;
-      if (category === "all") {
-        filteredProjects = [...projectsData];
-      } else {
-        filteredProjects = projectsData.filter(p => p.category === category);
-      }
-      currentIndex = 0;
-      renderCarousel();
-    }
-
-    prevBtn.addEventListener("click", prevSlide);
-    nextBtn.addEventListener("click", nextSlide);
-    window.addEventListener("resize", () => {
       updateSlidesToShow();
       renderCarousel();
-    });
-
-    filterButtons.forEach(btn => {
-      btn.addEventListener("click", () => {
-        filterButtons.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        const category = btn.getAttribute("data-category");
-        filterProjects(category);
-      });
-    });
-
-    updateSlidesToShow();
-    renderCarousel();
-  </script>
-</body>
+    </script>
+  </body>
 </html>
