@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pathfinding on a Big Map | Martin Chow Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 0.75rem;
+      margin-bottom: 2rem;
+      background: linear-gradient(135deg, #1a202c, #0f172a);
+      cursor: pointer;
+    }
+    .video-container video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .video-placeholder {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a202c, #0f172a);
+      color: var(--text);
+      text-align: center;
+      z-index: 2;
+    }
+    .video-placeholder .play-icon {
+      font-size: 4rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      opacity: 0.8;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .video-placeholder:hover .play-icon {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+    .video-placeholder p {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .video-container.playing .video-placeholder {
+      display: none;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      transition: gap 0.2s;
+    }
+    .back-link:hover {
+      gap: 0.75rem;
+      text-decoration: underline;
+    }
+    .project-page {
+      max-width: 900px;
+    }
+    .project-header {
+      margin-bottom: 2rem;
+    }
+    .project-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #ffffff, #4fd1c5);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .project-meta-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .detail-badge {
+      font-size: 0.75rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(79, 209, 197, 0.15);
+      border: 1px solid rgba(79, 209, 197, 0.3);
+      color: var(--accent);
+    }
+    .project-detail-section {
+      margin-bottom: 2rem;
+    }
+    .project-detail-section h2 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+      border-left: 3px solid var(--accent);
+      padding-left: 0.75rem;
+    }
+    .project-detail-section p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .project-detail-section ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .project-detail-section ul li {
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    .project-detail-section ul li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+    .tech-stack-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .tech-pill {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.15);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      color: var(--muted);
+    }
+    .feature-card {
+      background: rgba(15, 23, 42, 0.8);
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+    }
+    .feature-card h3 {
+      color: var(--accent);
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+    }
+    .feature-card p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .screenshots-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .screenshot {
+      background: rgba(15, 23, 42, 0.6);
+      border-radius: 0.5rem;
+      padding: 1rem;
+      text-align: center;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      transition: transform 0.2s;
+    }
+    .screenshot:hover {
+      transform: translateY(-2px);
+      border-color: rgba(79, 209, 197, 0.3);
+    }
+    .screenshot .icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .screenshot p {
+      font-size: 0.8rem;
+      margin-bottom: 0;
+    }
+    .screenshot .screenshot-title {
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+  </style>
+<body>
+  <div class="page">
+    <header>
+      <div class="hero-name">Martin Chow</div>
+      <div class="hero-title-large">Software & Graphics Developer</div>
+      <div class="nav-links-center">
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="Your_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="section project-page">
+        <a href="index.html#projects" class="back-link">← Back to Projects</a>
+
+        <!-- HEADER -->
+        <div class="project-header">
+          <h1>Large‑Scale A* Pathfinding Framework</h1>
+          <div class="project-meta-badges">
+            <span class="detail-badge">2023</span>
+            <span class="detail-badge">AI Developer / TA</span>
+            <span class="detail-badge">A* Search + Navigation</span>
+          </div>
+        </div>
+
+        <!-- IMAGE GALLERY -->
+        <div class="project-detail-section">
+          <div class="image-gallery-3">
+            <img src="images/pathfinding_1.png" alt="Pathfinding Screenshot 1">
+          </div>
+        </div>
+
+        <!-- OVERVIEW -->
+        <div class="project-detail-section">
+          <h2>Overview</h2>
+          <p>
+            A large‑scale A* pathfinding framework designed for complex, expansive maps. 
+            Built as both a high‑performance navigation system and an educational tool for students learning AI search algorithms. 
+            The system supports efficient open‑set/closed‑set management, heuristic tuning, and real‑time visualization of search behavior.
+          </p>
+        </div>
+
+        <!-- RESPONSIBILITIES -->
+        <div class="project-detail-section">
+          <h2>My Responsibilities</h2>
+          <ul>
+            <li>Designed and implemented a scalable A* search framework for large maps</li>
+            <li>Optimized node expansion, heuristics, and memory usage for real‑time performance</li>
+            <li>Created visualization tools to show search paths, visited nodes, and frontier expansion</li>
+            <li>Developed assignment materials to help students understand AI navigation</li>
+            <li>Built demo scenarios showcasing performance across different map sizes</li>
+            <li>Implemented modular heuristics (Manhattan, Euclidean, diagonal, weighted)</li>
+          </ul>
+        </div>
+
+        <!-- TECHNICAL HIGHLIGHTS -->
+        <div class="project-detail-section">
+          <h2>Technical Highlights</h2>
+
+          <ul>
+            <li><strong>Optimized A* Search:</strong> Efficient priority queue, reduced memory churn, fast neighbor evaluation</li>
+            <li><strong>Scalability:</strong> Handles very large grid maps with stable performance</li>
+            <li><strong>Heuristic System:</strong> Pluggable heuristics with tunable weights for different navigation styles</li>
+            <li><strong>Visualization:</strong> Real‑time rendering of open/closed sets and final path</li>
+            <li><strong>Teaching Tool:</strong> Designed as an assignment to help students explore AI navigation concepts</li>
+          </ul>
+        </div>
+
+        <!-- TECH STACK -->
+        <div class="project-detail-section">
+          <h2>Tech Stack</h2>
+          <div class="tech-stack-list">
+            <span class="tech-pill">Python</span>
+            <span class="tech-pill">A* Search</span>
+            <span class="tech-pill">Heuristics</span>
+            <span class="tech-pill">AI Navigation</span>
+            <span class="tech-pill">Algorithm Optimization</span>
+          </div>
+        </div>
+
+        <!-- FEATURE CARDS -->
+        <div class="project-detail-section">
+          <h2>Featured Components</h2>
+
+          <div class="feature-card">
+            <h3>Scalable A* Search Engine</h3>
+            <p>
+              Designed to handle large maps efficiently with optimized data structures 
+              and reduced overhead during node expansion.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <h3>Heuristic‑Driven Navigation</h3>
+            <p>
+              Supports multiple heuristics and weighting strategies, enabling different 
+              navigation behaviors and performance profiles.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <h3>Real‑Time Visualization Tools</h3>
+            <p>
+              Visual debugging tools show search progression, visited nodes, and final paths, 
+              making the algorithm intuitive for students.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <h3>Educational Framework</h3>
+            <p>
+              Developed as a teaching assignment to help students explore AI search algorithms 
+              and understand how heuristics influence performance.
+            </p>
+          </div>
+        </div>
+
+      </section>
+    </main>
+  </div>
+</body>
+
+</html>

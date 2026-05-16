@@ -404,7 +404,9 @@ main {
 .project-badge.graphics { background: rgba(139, 92, 246, 0.2); color: #8b5cf6; }
 .project-badge.animation { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
 .project-badge.physics { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
-.project-badge.gameplay { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
+.project-badge.ai { background: rgba(16, 185, 129, 0.2); color: #10b981; }
+.project-badge.ue { background: rgba(0, 112, 176, 0.2); color: #0070b0; }
+.project-badge.unity { background: rgba(128, 128, 128, 0.2); color: #a0a0a0; }
 
 .project-short-desc {
   font-size: 0.85rem;

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pokémon AI | Martin Chow Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 0.75rem;
+      margin-bottom: 2rem;
+      background: linear-gradient(135deg, #1a202c, #0f172a);
+      cursor: pointer;
+    }
+    .video-container video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .video-placeholder {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a202c, #0f172a);
+      color: var(--text);
+      text-align: center;
+      z-index: 2;
+    }
+    .video-placeholder .play-icon {
+      font-size: 4rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      opacity: 0.8;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .video-placeholder:hover .play-icon {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+    .video-placeholder p {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .video-container.playing .video-placeholder {
+      display: none;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      transition: gap 0.2s;
+    }
+    .back-link:hover {
+      gap: 0.75rem;
+      text-decoration: underline;
+    }
+    .project-page {
+      max-width: 900px;
+    }
+    .project-header {
+      margin-bottom: 2rem;
+    }
+    .project-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #ffffff, #4fd1c5);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .project-meta-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .detail-badge {
+      font-size: 0.75rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(79, 209, 197, 0.15);
+      border: 1px solid rgba(79, 209, 197, 0.3);
+      color: var(--accent);
+    }
+    .project-detail-section {
+      margin-bottom: 2rem;
+    }
+    .project-detail-section h2 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+      border-left: 3px solid var(--accent);
+      padding-left: 0.75rem;
+    }
+    .project-detail-section p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .project-detail-section ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .project-detail-section ul li {
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    .project-detail-section ul li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+    .tech-stack-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .tech-pill {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.15);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      color: var(--muted);
+    }
+    .feature-card {
+      background: rgba(15, 23, 42, 0.8);
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+    }
+    .feature-card h3 {
+      color: var(--accent);
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+    }
+    .feature-card p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .screenshots-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .screenshot {
+      background: rgba(15, 23, 42, 0.6);
+      border-radius: 0.5rem;
+      padding: 1rem;
+      text-align: center;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      transition: transform 0.2s;
+    }
+    .screenshot:hover {
+      transform: translateY(-2px);
+      border-color: rgba(79, 209, 197, 0.3);
+    }
+    .screenshot .icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .screenshot p {
+      font-size: 0.8rem;
+      margin-bottom: 0;
+    }
+    .screenshot .screenshot-title {
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+  </style>
+<body>
+  <div class="page">
+    <header>
+      <div class="hero-name">Martin Chow</div>
+      <div class="hero-title-large">Software & Graphics Developer</div>
+      <div class="nav-links-center">
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="Your_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="section project-page">
+        <a href="index.html#projects" class="back-link">← Back to Projects</a>
+
+        <!-- HEADER -->
+        <div class="project-header">
+          <h1>Offline CPU Ray Tracer</h1>
+          <div class="project-meta-badges">
+            <span class="detail-badge">2026</span>
+            <span class="detail-badge">Graphics Programmer</span>
+            <span class="detail-badge">CPU Path Tracing + IBL</span>
+          </div>
+        </div>
+
+        <!-- IMAGE GALLERY -->
+        <div class="project-detail-section">
+          <div class="image-gallery-3">
+            <img src="images/cpu_rt_1.png" alt="CPU Ray Tracer Screenshot 1">
+            <img src="images/cpu_rt_2.png" alt="CPU Ray Tracer Screenshot 2">
+            <img src="images/cpu_rt_3.png" alt="CPU Ray Tracer Screenshot 3">
+          </div>
+        </div>
+
+        <!-- OVERVIEW -->
+        <div class="project-detail-section">
+          <h2>Overview</h2>
+          <p>
+            A physically‑based offline CPU ray tracer implementing BVH acceleration, 
+            global illumination, soft shadows, reflections, refraction, and HDR image‑based lighting (IBL). 
+            The renderer uses a path tracing approach to simulate realistic light transport, 
+            producing high‑quality images with physically accurate shading and material behavior.
+          </p>
+        </div>
+
+        <!-- RESPONSIBILITIES -->
+        <div class="project-detail-section">
+          <h2>My Responsibilities</h2>
+          <ul>
+            <li>Implemented BVH acceleration structure for fast ray traversal</li>
+            <li>Developed a full path tracing pipeline with Monte Carlo sampling</li>
+            <li>Added global illumination, indirect lighting, and multi‑bounce scattering</li>
+            <li>Implemented reflections, refraction, and Fresnel‑based materials</li>
+            <li>Integrated HDR environment maps for image‑based lighting (IBL)</li>
+            <li>Built material system supporting metal, dielectric, diffuse, and emissive surfaces</li>
+            <li>Created debug visualizations for normals, albedo, and ray depth</li>
+          </ul>
+        </div>
+
+        <!-- TECHNICAL HIGHLIGHTS -->
+        <div class="project-detail-section">
+          <h2>Technical Highlights</h2>
+
+          <ul>
+            <li><strong>Path Tracing:</strong> Multi‑bounce GI, Monte Carlo sampling, Russian roulette termination</li>
+            <li><strong>Acceleration Structure:</strong> SAH‑optimized BVH for efficient ray traversal</li>
+            <li><strong>Lighting:</strong> HDR IBL, emissive materials, indirect diffuse and specular lighting</li>
+            <li><strong>Materials:</strong> Dielectric refraction, metal microfacet reflection, Lambertian diffuse</li>
+            <li><strong>Effects:</strong> Soft shadows, caustics, glossy reflections, depth‑based scattering</li>
+            <li><strong>Debug Tools:</strong> Normal buffer, albedo buffer, ray depth visualization</li>
+          </ul>
+        </div>
+
+        <!-- TECH STACK -->
+        <div class="project-detail-section">
+          <h2>Tech Stack</h2>
+          <div class="tech-stack-list">
+            <span class="tech-pill">C++</span>
+            <span class="tech-pill">CPU Rendering</span>
+            <span class="tech-pill">BVH</span>
+            <span class="tech-pill">Path Tracing</span>
+            <span class="tech-pill">HDR IBL</span>
+            <span class="tech-pill">Monte Carlo Sampling</span>
+          </div>
+        </div>
+
+        <!-- FEATURE CARDS -->
+        <div class="project-detail-section">
+          <h2>Featured Components</h2>
+
+          <div class="feature-card">
+            <h3>BVH Acceleration Structure</h3>
+            <p>
+              Implemented a bounding volume hierarchy to drastically reduce ray–scene intersection cost, 
+              enabling complex scenes to render efficiently on the CPU.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <h3>Global Illumination & Path Tracing</h3>
+            <p>
+              Multi‑bounce indirect lighting with Monte Carlo sampling produces realistic soft lighting, 
+              color bleeding, and physically accurate shading.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <h3>Physically‑Based Materials</h3>
+            <p>
+              Supports dielectric refraction, metal microfacet reflection, diffuse scattering, 
+              and emissive surfaces for realistic material behavior.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <h3>HDR Image‑Based Lighting</h3>
+            <p>
+              Integrated HDR environment maps for natural lighting, reflections, and ambient illumination.
+            </p>
+          </div>
+        </div>
+
+      </section>
+</html>

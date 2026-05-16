@@ -109,7 +109,9 @@
             <button class="filter-btn" data-category="physics">Physics</button>
             <button class="filter-btn" data-category="ai">AI</button>
             <button class="filter-btn" data-category="unity">Unity</button>
-            <button class="filter-btn" data-category="unreal">Unreal Engine</button>
+            <button class="filter-btn" data-category="unreal">
+              Unreal Engine
+            </button>
           </div>
 
           <div class="carousel-container">
@@ -307,6 +309,44 @@
           techStack: "C++, OpenGL, GLM, IMGUI",
           image: "images/physics-engine.png",
         },
+        {
+          id: "pokemon-ai",
+          name: "Pokémon Battle Reinforcement Learning Agent",
+          year: "2024",
+          role: "AI Researcher",
+          type: "Reinforcement Learning",
+          category: "ai",
+          shortDesc:
+            "A Q-learning agent trained on Pokémon Showdown battles, learning strategies through rewards for damage, KOs, and match victories. Supports customizable reward shaping to create unique AI playstyles.",
+          techStack:
+            "Python, Q-Learning, Reinforcement Learning, Pokémon Showdown API",
+          image: "images/pokemon-ai.png",
+        },
+        {
+          id: "pathfinding-bigmap",
+          name: "Large-Scale A* Pathfinding Framework",
+          year: "2023",
+          role: "AI Developer / Teaching Assistant",
+          type: "AI Navigation System",
+          category: "ai",
+          shortDesc:
+            "A scalable A* pathfinding framework designed for large maps, optimized for real-time navigation and used as an educational assignment to teach AI search algorithms.",
+          techStack: "Python, A* Search, Heuristics, AI Navigation",
+          image: "images/pathfinding-bigmap.png",
+        },
+        {
+          id: "deeptracer-ai",
+          name: "DeepTracer AI – Protein Structure Prediction",
+          year: "2022",
+          role: "AI Developer",
+          type: "Deep Learning – Bioinformatics",
+          category: "ai",
+          shortDesc:
+            "An AI system for ultra-fast, fully automated de novo protein complex structure prediction from 3D electron microscopy maps using deep learning and optimization techniques.",
+          techStack:
+            "Python, Deep Learning, Bioinformatics, EM Data Processing",
+          image: "images/deeptracer-ai.png",
+        },
       ];
 
       // Carousel variables
@@ -370,6 +410,25 @@
           goToPage(currentPage - 1);
         }
       }
+      // Helper function to normalize category for CSS class
+      function getCategoryClass(category) {
+        const lower = category.toLowerCase();
+        // Map variations to standard classes
+        if (lower === "ai") return "ai";
+        if (lower === "ue5" || lower === "ue" || lower === "unreal")
+          return "ue5";
+        if (lower === "unity") return "unity";
+        return lower;
+      }
+
+      // Helper for display text
+      function getCategoryDisplay(category) {
+        const lower = category.toLowerCase();
+        if (lower === "ai") return "AI";
+        if (lower === "ue5" || lower === "ue") return "UE5";
+        if (lower === "unity") return "Unity";
+        return category.charAt(0).toUpperCase() + category.slice(1);
+      }
 
       function renderCarousel() {
         if (!track) return;
@@ -386,7 +445,8 @@
           </div>
           <div class="project-card-content">
             <h3>${p.name}</h3>
-            <div class="project-badge ${p.category}">${p.category.charAt(0).toUpperCase() + p.category.slice(1)}</div>
+            <div class="project-badge ${p.category}">${getCategoryDisplay(p.category)}</div>
+            
             <p class="project-short-desc">${p.shortDesc}</p>
             <div class="project-tech-stack">
               ${p.techStack
