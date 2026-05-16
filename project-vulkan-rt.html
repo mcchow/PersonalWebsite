@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LuareEye Engine | Lua Li Portfolio</title>
+  <title>Real-Time Ray Tracing Renderer</title>
   <link rel="stylesheet" href="style.css" />
   <style>
     .video-container {
@@ -209,32 +209,32 @@
 
         <!-- HEADER -->
         <div class="project-header">
-          <h1>Juniper Engine – Color Puzzle World</h1>
+          <h1>Vulkan Real‑Time Ray Tracing Renderer</h1>
           <div class="project-meta-badges">
-            <span class="detail-badge">2025</span>
-            <span class="detail-badge">Engine & Tools Developer</span>
-            <span class="detail-badge">3D Puzzle Game on Custom Engine (C++)</span>
+            <span class="detail-badge">2024</span>
+            <span class="detail-badge">Graphics Programmer</span>
+            <span class="detail-badge">Vulkan + RTX Ray Tracing</span>
           </div>
         </div>
 
         <!-- VIDEO -->
         <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;">
-            <iframe 
-            src="https://www.youtube.com/embed/a8Cokb9uSUA"
-            title="Color Puzzle World Demo"
+          <iframe 
+            src="https://www.youtube.com/embed/cz1W_5a3MqU"
+            title="Vulkan Ray Tracing Demo"
             style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen>
-            </iframe>
+          </iframe>
         </div>
 
         <!-- OVERVIEW -->
         <div class="project-detail-section">
           <h2>Overview</h2>
           <p>
-            Color Puzzle World is a 3D puzzle adventure built on a custom engine featuring skeletal animation, dynamic lighting, Jolt physics, multithreaded systems, and Lua scripting. 
-            Players manipulate color to alter their character and interact with the environment — unlocking paths, activating mechanisms, and revealing hidden solutions. 
-            Each puzzle blends physics, light, motion, and script‑driven logic to reward experimentation and creative problem‑solving.
+            A real‑time ray tracing renderer built using Vulkan’s RTX extensions, featuring BVH acceleration structures, 
+            physically‑based shading, soft shadows, reflections, and ray‑gen / closest‑hit / miss shader pipelines. 
+            The renderer demonstrates modern GPU ray tracing techniques and serves as a foundation for future hybrid raster‑RT engines.
           </p>
         </div>
 
@@ -242,12 +242,12 @@
         <div class="project-detail-section">
           <h2>My Responsibilities</h2>
           <ul>
-            <li>Implemented gameplay systems using Lua scripting for puzzle logic and interactions</li>
-            <li>Integrated Jolt physics for dynamic objects, triggers, and puzzle mechanisms</li>
-            <li>Developed animation and lighting features used throughout the game</li>
-            <li>Built multithreaded systems to support real‑time simulation and rendering</li>
-            <li>Created tools and workflows for designers to author puzzles and color‑based mechanics</li>
-            <li>Designed asset import/export pipelines for Blender models, materials, and scenes</li>
+            <li>Implemented TLAS/BLAS acceleration structures with Vulkan Ray Tracing extensions</li>
+            <li>Developed ray‑gen, closest‑hit, any‑hit, and miss shader stages</li>
+            <li>Built PBR shading with GGX, image‑based lighting, and HDR environment maps</li>
+            <li>Implemented soft shadows, reflections, and recursive ray evaluation</li>
+            <li>Created GPU pipelines for ray tracing, descriptor sets, and shader binding tables</li>
+            <li>Integrated real‑time debug visualizations for normals, depth, and BVH structure</li>
           </ul>
         </div>
 
@@ -256,11 +256,12 @@
           <h2>Technical Highlights</h2>
 
           <ul>
-            <li><strong>Gameplay & Scripting:</strong> Lua‑driven puzzle logic, color‑based state system, scriptable triggers and mechanisms</li>
-            <li><strong>Rendering:</strong> Dynamic lighting, stylized shading, real‑time material updates</li>
-            <li><strong>Physics:</strong> Jolt‑based interactions, rigid‑body puzzles, collision‑driven events</li>
-            <li><strong>Tools & Pipelines:</strong> Blender → Engine asset pipeline, scene import/export, designer‑friendly puzzle authoring tools</li>
-            <li><strong>Systems:</strong> Multithreaded update loops, engine subsystems for gameplay, physics, and rendering</li>
+            <li><strong>Ray Tracing Pipeline:</strong> Ray‑gen, closest‑hit, miss shaders, SBT layout, recursion</li>
+            <li><strong>Acceleration Structures:</strong> BLAS per mesh, TLAS per scene, GPU‑built BVH</li>
+            <li><strong>Lighting:</strong> PBR materials, HDR IBL, GGX BRDF, environment sampling</li>
+            <li><strong>Effects:</strong> Soft shadows, reflections, Fresnel, roughness‑based scattering</li>
+            <li><strong>Debug Tools:</strong> BVH visualization, normal/depth buffers, ray debug views</li>
+            <li><strong>Systems:</strong> Vulkan memory management, descriptor sets, GPU synchronization</li>
           </ul>
         </div>
 
@@ -269,12 +270,12 @@
           <h2>Tech Stack</h2>
           <div class="tech-stack-list">
             <span class="tech-pill">C++</span>
-            <span class="tech-pill">Lua</span>
-            <span class="tech-pill">OpenGL</span>
+            <span class="tech-pill">Vulkan</span>
+            <span class="tech-pill">RTX Extensions</span>
             <span class="tech-pill">GLSL</span>
-            <span class="tech-pill">Jolt Physics</span>
-            <span class="tech-pill">IMGUI</span>
-            <span class="tech-pill">Blender (Assets)</span>
+            <span class="tech-pill">PBR Shading</span>
+            <span class="tech-pill">BVH</span>
+            <span class="tech-pill">HDR IBL</span>
           </div>
         </div>
 
@@ -283,31 +284,30 @@
           <h2>Featured Components</h2>
 
           <div class="feature-card">
-            <h3>Color‑Based Puzzle System</h3>
+            <h3>Acceleration Structures</h3>
             <p>
-              Designed a flexible color‑state system where player abilities, object behaviors, and puzzle logic all respond to color changes. 
-              This system drives doors, platforms, triggers, and environmental interactions.
+              Implemented GPU‑accelerated BLAS and TLAS structures with efficient updates and compaction, enabling fast ray traversal.
             </p>
           </div>
 
           <div class="feature-card">
-            <h3>Lua Gameplay Scripting</h3>
+            <h3>PBR + IBL Shading</h3>
             <p>
-              Built a Lua scripting layer enabling designers to define puzzle logic, triggers, animations, and object behaviors without modifying engine code.
+              Built a physically‑based shading model with GGX, Fresnel, and HDR environment lighting for realistic reflections and materials.
             </p>
           </div>
 
           <div class="feature-card">
-            <h3>Physics‑Driven Interactions</h3>
+            <h3>Ray Tracing Shader Pipeline</h3>
             <p>
-              Integrated Jolt physics to support dynamic objects, rigid‑body puzzles, collision events, and interactive mechanisms.
+              Developed ray‑gen, closest‑hit, any‑hit, and miss shaders with recursive ray evaluation and material‑based scattering.
             </p>
           </div>
 
           <div class="feature-card">
-            <h3>Blender Asset Pipeline</h3>
+            <h3>Real‑Time Debug Tools</h3>
             <p>
-              Created a Blender‑to‑engine pipeline for meshes, materials, animations, and scene metadata, enabling fast iteration for designers.
+              Added visualization modes for normals, depth, BVH nodes, and ray paths to support rapid iteration and debugging.
             </p>
           </div>
         </div>
@@ -330,4 +330,5 @@
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
+
 </html>
