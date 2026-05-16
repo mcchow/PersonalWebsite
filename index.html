@@ -287,8 +287,6 @@
           techStack: "C++, Vulkan, GLSL, RTX, BVH",
           image: "images/vulkan-rt.png",
         },
-
-        // ⭐ NEW PROJECT — Offline CPU Ray Tracer
         {
           id: "cpu-raytracer",
           name: "Offline CPU Ray Tracer",
@@ -301,14 +299,14 @@
           techStack: "C++, CPU Rendering, BVH, Path Tracing, IBL",
           image: "images/cpu-raytracer.png",
         },
-        ,
       ];
 
       // Carousel variables
-      let currentIndex = 0;
+      let currentPage = 0;
       let currentCategory = "all";
       let filteredProjects = [...projectsData];
       let slidesToShow = 1;
+      let slideWidth = 0;
 
       // DOM elements
       const track = document.getElementById("carouselTrack");
@@ -323,82 +321,108 @@
         else slidesToShow = 1;
       }
 
-      function renderCarousel() {
-        let html = "";
+      function getTotalPages() {
+        return Math.ceil(filteredProjects.length / slidesToShow);
+      }
 
-        for (let i = 0; i < filteredProjects.length; i++) {
-          const p = filteredProjects[i];
+      function updateCarouselPosition() {
+        if (!track || track.children.length === 0) return;
 
-          html += `
-          <div class="carousel-slide">
-            <div class="project-card-large">
-              <div class="project-image-preview" style="background: linear-gradient(135deg, #1a202c, #0f172a);">
-                <img class="project-preview-img" src="${p.image}" alt="${p.name} preview">
-              </div>
-              <div class="project-card-content">
-                <h3>${p.name}</h3>
-                <div class="project-badge ${p.category}">${p.category.charAt(0).toUpperCase() + p.category.slice(1)}</div>
-                <p class="project-short-desc">${p.shortDesc}</p>
-                <div class="project-tech-stack">
-                  ${p.techStack
-                    .split(",")
-                    .slice(0, 3)
-                    .map((tech) => `<span>${tech.trim()}</span>`)
-                    .join("")}
-                </div>
-                <a href="project-${p.id}.html" class="view-project-btn">View Details →</a>
-              </div>
-            </div>
-          </div>
-        `;
-        }
+        // Get the actual width of one slide
+        const firstSlide = track.children[0];
+        const slideRect = firstSlide.getBoundingClientRect();
+        slideWidth = slideRect.width;
 
-        track.innerHTML = html;
+        // Calculate translation: move by page number * slidesToShow * slideWidth
+        const translateX = -(currentPage * slidesToShow * slideWidth);
+
+        track.style.transform = `translateX(${translateX}px)`;
+      }
+
+      function goToPage(page) {
+        const totalPages = getTotalPages();
+        if (page < 0) page = 0;
+        if (page >= totalPages) page = totalPages - 1;
+        if (page === currentPage) return;
+
+        currentPage = page;
         updateCarouselPosition();
         updateIndicators();
       }
 
-      function updateCarouselPosition() {
-        const slideWidth = track.children[0]?.offsetWidth || 0;
-        track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+      function nextSlide() {
+        const totalPages = getTotalPages();
+        if (currentPage + 1 < totalPages) {
+          goToPage(currentPage + 1);
+        }
+      }
+
+      function prevSlide() {
+        if (currentPage > 0) {
+          goToPage(currentPage - 1);
+        }
+      }
+
+      function renderCarousel() {
+        if (!track) return;
+
+        let html = "";
+        for (let i = 0; i < filteredProjects.length; i++) {
+          const p = filteredProjects[i];
+          html += `
+      <div class="carousel-slide">
+        <div class="project-card-large">
+          <div class="project-image-preview" style="background: linear-gradient(135deg, #1a202c, #0f172a);">
+            <img class="project-preview-img" src="${p.image}" alt="${p.name}" onerror="this.style.display='none'">
+            <div class="preview-placeholder" style="${p.image ? "display:none" : "display:flex"}">${p.name.charAt(0)}</div>
+          </div>
+          <div class="project-card-content">
+            <h3>${p.name}</h3>
+            <div class="project-badge ${p.category}">${p.category.charAt(0).toUpperCase() + p.category.slice(1)}</div>
+            <p class="project-short-desc">${p.shortDesc}</p>
+            <div class="project-tech-stack">
+              ${p.techStack
+                .split(",")
+                .slice(0, 3)
+                .map((tech) => `<span>${tech.trim()}</span>`)
+                .join("")}
+            </div>
+            <a href="project-${p.id}.html" class="view-project-btn">View Details →</a>
+          </div>
+        </div>
+      </div>
+    `;
+        }
+
+        track.innerHTML = html;
+        currentPage = 0;
+
+        // Small delay to ensure DOM is ready
+        setTimeout(() => {
+          updateCarouselPosition();
+          updateIndicators();
+        }, 50);
       }
 
       function updateIndicators() {
-        const totalPages = Math.ceil(filteredProjects.length / slidesToShow);
+        if (!indicatorsContainer) return;
+
+        const totalPages = getTotalPages();
         let indicatorsHtml = "";
         for (let i = 0; i < totalPages; i++) {
-          indicatorsHtml += `<button class="indicator ${i === currentIndex ? "active" : ""}" data-index="${i}"></button>`;
+          indicatorsHtml += `<button class="indicator ${i === currentPage ? "active" : ""}" data-page="${i}"></button>`;
         }
         indicatorsContainer.innerHTML = indicatorsHtml;
 
         document.querySelectorAll(".indicator").forEach((ind) => {
           ind.addEventListener("click", () => {
-            currentIndex = parseInt(ind.getAttribute("data-index"));
-            updateCarouselPosition();
-            updateIndicators();
+            const page = parseInt(ind.getAttribute("data-page"));
+            goToPage(page);
           });
         });
       }
 
-      function nextSlide() {
-        const totalPages = Math.ceil(filteredProjects.length / slidesToShow);
-        if (currentIndex + 1 < totalPages) {
-          currentIndex++;
-          updateCarouselPosition();
-          updateIndicators();
-        }
-      }
-
-      function prevSlide() {
-        if (currentIndex > 0) {
-          currentIndex--;
-          updateCarouselPosition();
-          updateIndicators();
-        }
-      }
-
-      function filterProjects(category) {
-        currentCategory = category;
+      function filterProjectsByCategory(category) {
         if (category === "all") {
           filteredProjects = [...projectsData];
         } else {
@@ -406,26 +430,41 @@
             (p) => p.category === category,
           );
         }
-        currentIndex = 0;
+        currentPage = 0;
         renderCarousel();
       }
 
-      prevBtn.addEventListener("click", prevSlide);
-      nextBtn.addEventListener("click", nextSlide);
+      // Debounced resize handler
+      let resizeTimeout;
       window.addEventListener("resize", () => {
-        updateSlidesToShow();
-        renderCarousel();
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+          updateSlidesToShow();
+          const totalPages = getTotalPages();
+          if (currentPage >= totalPages) {
+            currentPage = Math.max(0, totalPages - 1);
+          }
+          updateCarouselPosition();
+          updateIndicators();
+        }, 150);
       });
 
-      filterButtons.forEach((btn) => {
-        btn.addEventListener("click", () => {
-          filterButtons.forEach((b) => b.classList.remove("active"));
-          btn.classList.add("active");
-          const category = btn.getAttribute("data-category");
-          filterProjects(category);
+      // Event listeners
+      if (prevBtn) prevBtn.addEventListener("click", prevSlide);
+      if (nextBtn) nextBtn.addEventListener("click", nextSlide);
+
+      if (filterButtons) {
+        filterButtons.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            filterButtons.forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+            const category = btn.getAttribute("data-category");
+            filterProjectsByCategory(category);
+          });
         });
-      });
+      }
 
+      // Initialize
       updateSlidesToShow();
       renderCarousel();
     </script>

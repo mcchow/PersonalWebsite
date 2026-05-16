@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LuareEye Engine | Lua Li Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 0.75rem;
+      margin-bottom: 2rem;
+      background: linear-gradient(135deg, #1a202c, #0f172a);
+      cursor: pointer;
+    }
+    .video-container video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .video-placeholder {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1a202c, #0f172a);
+      color: var(--text);
+      text-align: center;
+      z-index: 2;
+    }
+    .video-placeholder .play-icon {
+      font-size: 4rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      opacity: 0.8;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .video-placeholder:hover .play-icon {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+    .video-placeholder p {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .video-container.playing .video-placeholder {
+      display: none;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      transition: gap 0.2s;
+    }
+    .back-link:hover {
+      gap: 0.75rem;
+      text-decoration: underline;
+    }
+    .project-page {
+      max-width: 900px;
+    }
+    .project-header {
+      margin-bottom: 2rem;
+    }
+    .project-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #ffffff, #4fd1c5);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .project-meta-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .detail-badge {
+      font-size: 0.75rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(79, 209, 197, 0.15);
+      border: 1px solid rgba(79, 209, 197, 0.3);
+      color: var(--accent);
+    }
+    .project-detail-section {
+      margin-bottom: 2rem;
+    }
+    .project-detail-section h2 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+      border-left: 3px solid var(--accent);
+      padding-left: 0.75rem;
+    }
+    .project-detail-section p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .project-detail-section ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .project-detail-section ul li {
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    .project-detail-section ul li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+    .tech-stack-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .tech-pill {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.15);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      color: var(--muted);
+    }
+    .feature-card {
+      background: rgba(15, 23, 42, 0.8);
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+    }
+    .feature-card h3 {
+      color: var(--accent);
+      font-size: 1.1rem;
+      margin-bottom: 0.75rem;
+    }
+    .feature-card p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .screenshots-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .screenshot {
+      background: rgba(15, 23, 42, 0.6);
+      border-radius: 0.5rem;
+      padding: 1rem;
+      text-align: center;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      transition: transform 0.2s;
+    }
+    .screenshot:hover {
+      transform: translateY(-2px);
+      border-color: rgba(79, 209, 197, 0.3);
+    }
+    .screenshot .icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .screenshot p {
+      font-size: 0.8rem;
+      margin-bottom: 0;
+    }
+    .screenshot .screenshot-title {
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+  </style>
+<body>
+  <div class="page">
+    <header>
+      <div class="hero-name">Martin Chow</div>
+      <div class="hero-title-large">Software & Graphics Developer</div>
+      <div class="nav-links-center">
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="Your_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="section project-page">
+        <a href="index.html#projects" class="back-link">← Back to Projects</a>
+
+        <!-- HEADER -->
+        <div class="project-header">
+          <h1>Juniper Engine – Color Puzzle World</h1>
+          <div class="project-meta-badges">
+            <span class="detail-badge">2025</span>
+            <span class="detail-badge">Engine & Tools Developer</span>
+            <span class="detail-badge">3D Puzzle Game on Custom Engine (C++)</span>
+          </div>
+        </div>
+
+        <!-- VIDEO -->
+        <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;">
+            <iframe 
+            src="https://www.youtube.com/embed/a8Cokb9uSUA"
+            title="Color Puzzle World Demo"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+            </iframe>
+        </div>
+
+        <!-- OVERVIEW -->
+        <div class="project-detail-section">
+          <h2>Overview</h2>
+          <p>
+            Color Puzzle World is a 3D puzzle adventure built on a custom engine featuring skeletal animation, dynamic lighting, Jolt physics, multithreaded systems, and Lua scripting. 
+            Players manipulate color to alter their character and interact with the environment — unlocking paths, activating mechanisms, and revealing hidden solutions. 
+            Each puzzle blends physics, light, motion, and script‑driven logic to reward experimentation and creative problem‑solving.
+          </p>
+        </div>
+
+        <!-- RESPONSIBILITIES -->
+        <div class="project-detail-section">
+          <h2>My Responsibilities</h2>
+          <ul>
+            <li>Implemented gameplay systems using Lua scripting for puzzle logic and interactions</li>
+            <li>Integrated Jolt physics for dynamic objects, triggers, and puzzle mechanisms</li>
+            <li>Developed animation and lighting features used throughout the game</li>
+            <li>Built multithreaded systems to support real‑time simulation and rendering</li>
+            <li>Created tools and workflows for designers to author puzzles and color‑based mechanics</li>
+            <li>Designed asset import/export pipelines for Blender models, materials, and scenes</li>
+          </ul>
+        </div>
+
+        <!-- TECHNICAL HIGHLIGHTS -->
+        <div class="project-detail-section">
+          <h2>Technical Highlights</h2>
+
+          <ul>
+            <li><strong>Gameplay & Scripting:</strong> Lua‑driven puzzle logic, color‑based state system, scriptable triggers and mechanisms</li>
+            <li><strong>Rendering:</strong> Dynamic lighting, stylized shading, real‑time material updates</li>
+            <li><strong>Physics:</strong> Jolt‑based interactions, rigid‑body puzzles, collision‑driven events</li>
+            <li><strong>Tools & Pipelines:</strong> Blender → Engine asset pipeline, scene import/export, designer‑friendly puzzle authoring tools</li>
+            <li><strong>Systems:</strong> Multithreaded update loops, engine subsystems for gameplay, physics, and rendering</li>
+          </ul>
+        </div>
+
+        <!-- TECH STACK -->
+        <div class="project-detail-section">
+          <h2>Tech Stack</h2>
+          <div class="tech-stack-list">
+            <span class="tech-pill">C++</span>
+            <span class="tech-pill">Lua</span>
+            <span class="tech-pill">OpenGL</span>
+            <span class="tech-pill">GLSL</span>
+            <span class="tech-pill">Jolt Physics</span>
+            <span class="tech-pill">IMGUI</span>
+            <span class="tech-pill">Blender (Assets)</span>
+          </div>
+        </div>
+
+        <!-- FEATURE CARDS -->
+        <div class="project-detail-section">
+          <h2>Featured Components</h2>
+
+          <div class="feature-card">
+            <h3>Color‑Based Puzzle System</h3>
+            <p>
+              Designed a flexible color‑state system where player abilities, object behaviors, and puzzle logic all respond to color changes. 
+              This system drives doors, platforms, triggers, and environmental interactions.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <h3>Lua Gameplay Scripting</h3>
+            <p>
+              Built a Lua scripting layer enabling designers to define puzzle logic, triggers, animations, and object behaviors without modifying engine code.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <h3>Physics‑Driven Interactions</h3>
+            <p>
+              Integrated Jolt physics to support dynamic objects, rigid‑body puzzles, collision events, and interactive mechanisms.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <h3>Blender Asset Pipeline</h3>
+            <p>
+              Created a Blender‑to‑engine pipeline for meshes, materials, animations, and scene metadata, enabling fast iteration for designers.
+            </p>
+          </div>
+        </div>
+
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <div>© <span id="year"></span> Martin Chow. All rights reserved.</div>
+        <div class="footer-links">
+          <a href="https://github.com/YOUR_GITHUB" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
