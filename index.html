@@ -101,20 +101,20 @@
         <div class="about-grid">
           <div class="about-text">
             <p>
-  I’m a developer who enjoys working close to the metal—building rendering systems, engine features, and tools that support real‑time interaction.
-</p>
+            I’m a developer who enjoys working close to the metal—building rendering systems, engine features, and tools that support real‑time interaction.
+            </p>
 
-<p>
-  Before focusing on graphics and engine development, I worked on the SQL Performance Team at Microsoft, where I built automated TPCH/TPCE benchmarking systems, maintained cross‑platform (Windows/Linux) test kits, and optimized multithreaded performance pipelines on Skylake‑class CPUs. That experience shaped how I think about reliability, profiling, and scalable system design.
-</p>
+            <p>
+              Before focusing on graphics and engine development, I worked on the SQL Performance Team at Microsoft, where I built automated TPCH/TPCE benchmarking systems, maintained cross‑platform (Windows/Linux) test kits, and optimized multithreaded performance pipelines on Skylake‑class CPUs. That experience shaped how I think about reliability, profiling, and scalable system design.
+            </p>
 
-<p>
-  Today, I apply those principles to real‑time graphics and engine programming: writing clean, maintainable C++ and designing systems that scale as projects grow. I care deeply about performance, clarity, and giving teams the tools they need to iterate quickly.
-</p>
+            <p>
+              Today, I apply those principles to real‑time graphics and engine programming: writing clean, maintainable C++ and designing systems that scale as projects grow. I care deeply about performance, clarity, and giving teams the tools they need to iterate quickly.
+            </p>
 
-<p>
-  I’m looking for opportunities where I can contribute to core technology while learning from experienced engineers and pushing my technical boundaries.
-</p>
+            <p>
+              I’m looking for opportunities where I can contribute to core technology while learning from experienced engineers and pushing my technical boundaries.
+            </p>
 
           </div>
 
@@ -149,7 +149,7 @@
           </p>
 
           <button class="contact-email" id="copyEmailBtn" type="button">
-            <span id="emailText">martinchow.dev@example.com</span>
+            <span id="emailText">chowmartin387@gmail.com</span>
             <span>⧉</span>
           </button>
         </div>
@@ -191,43 +191,25 @@
     const projectsData = [
       {
         id: "luareeye",
-        name: "LuareEye Engine",
+        name: "LuareEye Engine - Bounce Back",
         year: "2025",
         role: "Engine & Tools Developer",
-        type: "Custom 3D Engine",
+        type: "Custom 3D Engine - 3D Action Game",
         category: "engine",
-        shortDesc: "A custom 3D engine with modern rendering pipeline, real‑time animation system, editor tooling, and spatial audio.",
-        techStack: "C++, OpenGL, GLSL, IMGUI, Bullet Physics"
+        shortDesc: "A game using custom 3D engine with modern rendering pipeline, real‑time animation system, editor tooling, and spatial audio.",
+        techStack: "C++, OpenGL, GLSL, IMGUI, Bullet Physics",
+        image: "images/luareeye.png"
       },
       {
         id: "colorpuzzle",
-        name: "Color Puzzle World",
+        name: "Juniper Engine - Color Puzzle World",
         year: "2025",
         role: "Engine & Tools Developer",
-        type: "3D Puzzle Game",
-        category: "gameplay",
+        type: "Custom 3D Engine - 3D Puzzle Game",
+        category: "engine",
         shortDesc: "3D puzzle adventure with skeletal animation, dynamic lighting, Jolt physics, multithreading, and Lua scripting.",
-        techStack: "C++, Lua, OpenGL, GLSL, Jolt Physics"
-      },
-      {
-        id: "rendering-sandbox",
-        name: "Rendering Sandbox",
-        year: "2024",
-        role: "Graphics Programmer",
-        type: "Research Project",
-        category: "graphics",
-        shortDesc: "Exploration of advanced rendering techniques including PBR, shadow mapping, and post-processing effects.",
-        techStack: "C++, OpenGL, GLSL, RenderDoc"
-      },
-      {
-        id: "skeletal-animation",
-        name: "Skeletal Animation System",
-        year: "2024",
-        role: "Animation Programmer",
-        type: "Animation Pipeline",
-        category: "animation",
-        shortDesc: "Full skeletal animation pipeline with skinning, blending, inverse kinematics, and retargeting.",
-        techStack: "C++, OpenGL, GLSL, Assimp"
+        techStack: "C++, Lua, OpenGL, GLSL, Jolt Physics",
+        image: "images/colorpuzzle.png"
       },
       {
         id: "physics-engine",
@@ -237,37 +219,8 @@
         type: "Physics Simulation",
         category: "physics",
         shortDesc: "Real-time physics engine with rigid body dynamics, collision detection, and numerical integration.",
-        techStack: "C++, OpenGL, GLM, IMGUI"
-      },
-      {
-        id: "particle-system",
-        name: "GPU Particle System",
-        year: "2023",
-        role: "Graphics Programmer",
-        type: "VFX System",
-        category: "graphics",
-        shortDesc: "High-performance GPU particle system with compute shaders supporting millions of particles.",
-        techStack: "C++, OpenGL, GLSL, Compute Shaders"
-      },
-      {
-        id: "editor-tools",
-        name: "Engine Editor Tools",
-        year: "2024",
-        role: "Tools Programmer",
-        type: "Developer Tools",
-        category: "engine",
-        shortDesc: "IMGUI-based editor suite with scene editor, asset browser, and real-time debugging tools.",
-        techStack: "C++, IMGUI, JSON"
-      },
-      {
-        id: "procedural-terrain",
-        name: "Procedural Terrain System",
-        year: "2023",
-        role: "Engine Programmer",
-        type: "Terrain Generation",
-        category: "graphics",
-        shortDesc: "Real-time procedural terrain generation with LOD system and GPU terrain rendering.",
-        techStack: "C++, OpenGL, GLSL, Compute Shaders"
+        techStack: "C++, OpenGL, GLM, IMGUI",
+        image: "images/physics-engine.png"
       }
     ];
 
@@ -300,7 +253,7 @@
           <div class="carousel-slide">
             <div class="project-card-large">
               <div class="project-image-preview" style="background: linear-gradient(135deg, #1a202c, #0f172a);">
-                <div class="preview-placeholder">${p.name.charAt(0)}</div>
+                <img class="project-preview-img" src="${p.image}" alt="${p.name} preview">
               </div>
               <div class="project-card-content">
                 <h3>${p.name}</h3>
