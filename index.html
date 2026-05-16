@@ -3,148 +3,172 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Marin Chow | Gameplay & Engine Programmer</title>
+  <title>Sheung Him Martin Chow | Software & Graphics Developer</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <div class="page">
-    <!-- STATIC HEADER -->
+
+    <!-- HEADER -->
     <header>
-      <div class="hero-name">Marin Chow</div>
-      <div class="hero-title-large">Gameplay & Engine Programmer</div>
+      <div class="hero-name">Sheung Him Martin Chow</div>
+      <div class="hero-title-large">Software & Graphics Developer</div>
+
       <div class="nav-links-center">
         <a href="index.html#projects">Projects</a>
         <a href="index.html#about">About</a>
         <a href="index.html#contact">Contact</a>
-        <a href="Your_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+        <a href="Resume.pdf" target="_blank" rel="noopener">Resume</a>
       </div>
     </header>
 
     <main>
-      <!-- Hero -->
+
+      <!-- HERO -->
       <section class="section hero" id="home">
         <div>
           <h1 class="hero-title">
-            Building <span class="hero-highlight">gameplay systems</span> and <span class="hero-highlight">custom engines</span> for real‑time worlds.
+            Creating <span class="hero-highlight">interactive systems</span> and building <span class="hero-highlight">real‑time graphics tools</span> from the ground up.
           </h1>
+
           <p class="hero-subtitle">
-            Engine & tools developer focused on C++, rendering pipelines, animation systems, and gameplay scripting. I build the low‑level systems that make games feel responsive and technically solid.
+            I’m a software developer focused on graphics, engine architecture, and gameplay‑driven tools.  
+            I enjoy building systems that are fast, reliable, and empower designers and artists to iterate freely.
           </p>
+
           <div class="hero-tags">
             <span class="tag">C++</span>
-            <span class="tag">Custom Engine</span>
+            <span class="tag">Graphics</span>
             <span class="tag">Rendering</span>
-            <span class="tag">Gameplay Systems</span>
+            <span class="tag">Engine Systems</span>
             <span class="tag">Tools</span>
             <span class="tag">Lua</span>
           </div>
+
           <div class="hero-actions">
             <a class="btn btn-primary" href="#projects">View Projects</a>
-            <a class="btn" href="Your_Resume.pdf" target="_blank" rel="noopener">Download Resume</a>
+            <a class="btn" href="Resume.pdf" target="_blank" rel="noopener">Download Resume</a>
           </div>
         </div>
+
         <aside class="hero-right">
           <div class="hero-right-title">Currently</div>
           <div class="hero-right-main">
-            F‑1 OPT candidate seeking engine, tools, or gameplay programming roles in the US.
+            Seeking software, graphics, or engine programming roles in the US.
           </div>
+
           <ul class="hero-right-list">
-            <li>• LuareEye Engine — custom 3D engine with deferred rendering, animation, tools</li>
-            <li>• Color Puzzle World — 3D puzzle game with Lua scripting, Jolt physics</li>
-            <li>• Open to internships, new grad, and junior roles</li>
+            <li>• LuareEye Engine — custom engine with rendering, animation, and editor tools</li>
+            <li>• Color Puzzle World — 3D puzzle game with Lua scripting and physics</li>
+            <li>• Open to internships, junior, and full‑time opportunities</li>
           </ul>
         </aside>
       </section>
 
-      <!-- Projects Section with Categories and Carousel -->
+      <!-- PROJECTS -->
       <section class="section" id="projects">
         <h2 class="section-title">Projects</h2>
-        
-        <!-- Category Filter Buttons -->
+
         <div class="category-filters">
           <button class="filter-btn active" data-category="all">All Projects</button>
           <button class="filter-btn" data-category="engine">Engine</button>
-          <button class="filter-btn" data-category="graphics">Graphics & Rendering</button>
+          <button class="filter-btn" data-category="graphics">Graphics</button>
           <button class="filter-btn" data-category="animation">Animation</button>
           <button class="filter-btn" data-category="physics">Physics</button>
           <button class="filter-btn" data-category="gameplay">Gameplay</button>
         </div>
 
-        <!-- Project Carousel -->
         <div class="carousel-container">
           <button class="carousel-btn prev-btn" id="prevBtn">‹</button>
+
           <div class="carousel-track-container">
             <div class="carousel-track" id="carouselTrack">
-              <!-- Projects will be injected here by JavaScript -->
+              <!-- JS injects project cards -->
             </div>
           </div>
+
           <button class="carousel-btn next-btn" id="nextBtn">›</button>
         </div>
-        
-        <!-- Carousel Indicators -->
+
         <div class="carousel-indicators" id="carouselIndicators"></div>
       </section>
 
-      <!-- About -->
+      <!-- ABOUT -->
       <section class="section" id="about">
         <h2 class="section-title">About Me</h2>
+
         <div class="about-grid">
           <div class="about-text">
             <p>
-              I'm a programmer who likes being close to the metal—engines, tools, and systems that other developers build on top of. I enjoy taking messy problems and turning them into clear, debuggable, and reusable code.
-            </p>
-            <p>
-              Right now I'm on F‑1 OPT in the US, looking for roles where I can work on engine, tools, or gameplay systems and grow alongside more experienced engineers.
-            </p>
-            <p>
-              I care a lot about iteration speed, good debug tooling, and making it easier for designers and artists to experiment without fighting the tech.
-            </p>
+  I’m a developer who enjoys working close to the metal—building rendering systems, engine features, and tools that support real‑time interaction.
+</p>
+
+<p>
+  Before focusing on graphics and engine development, I worked on the SQL Performance Team at Microsoft, where I built automated TPCH/TPCE benchmarking systems, maintained cross‑platform (Windows/Linux) test kits, and optimized multithreaded performance pipelines on Skylake‑class CPUs. That experience shaped how I think about reliability, profiling, and scalable system design.
+</p>
+
+<p>
+  Today, I apply those principles to real‑time graphics and engine programming: writing clean, maintainable C++ and designing systems that scale as projects grow. I care deeply about performance, clarity, and giving teams the tools they need to iterate quickly.
+</p>
+
+<p>
+  I’m looking for opportunities where I can contribute to core technology while learning from experienced engineers and pushing my technical boundaries.
+</p>
+
           </div>
+
           <aside class="about-box">
             <h3>Skills & Focus</h3>
+
             <div class="skills-list">
               <span class="skill-pill">C++</span>
-              <span class="skill-pill">Engine Architecture</span>
-              <span class="skill-pill">OpenGL/GLSL</span>
+              <span class="skill-pill">Graphics Programming</span>
               <span class="skill-pill">Rendering Pipelines</span>
+              <span class="skill-pill">OpenGL / GLSL</span>
+              <span class="skill-pill">Engine Architecture</span>
               <span class="skill-pill">Animation Systems</span>
               <span class="skill-pill">Lua Scripting</span>
-              <span class="skill-pill">Jolt/Bullet Physics</span>
-              <span class="skill-pill">IMGUI</span>
+              <span class="skill-pill">Physics Integration</span>
+              <span class="skill-pill">IMGUI Tools</span>
               <span class="skill-pill">Multithreading</span>
-              <span class="skill-pill">Tools Development</span>
             </div>
           </aside>
         </div>
       </section>
 
-      <!-- Contact -->
+      <!-- CONTACT -->
       <section class="section" id="contact">
         <h2 class="section-title">Contact</h2>
+
         <div class="contact-card">
-          <div class="contact-title">Let's talk.</div>
+          <div class="contact-title">Let’s connect.</div>
+
           <p class="contact-text">
-            If you're looking for someone who enjoys building engines, tools, and gameplay systems—and is hungry to learn from a strong team—I'd love to chat.
+            If you're looking for someone who enjoys building graphics systems, tools, and gameplay‑focused tech, I’d love to talk.
           </p>
+
           <button class="contact-email" id="copyEmailBtn" type="button">
-            <span id="emailText">lua.li@example.com</span>
+            <span id="emailText">martinchow.dev@example.com</span>
             <span>⧉</span>
           </button>
         </div>
       </section>
+
     </main>
 
     <footer>
       <div class="footer-inner">
-        <div>© <span id="year"></span> Lua Li. All rights reserved.</div>
+        <div>© <span id="year"></span> Sheung Him Martin Chow. All rights reserved.</div>
+
         <div class="footer-links">
-          <a href="https://github.com/luali" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://www.linkedin.com/in/luali" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/YOUR_GITHUB" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener">LinkedIn</a>
         </div>
       </div>
     </footer>
-  </div>
 
+  </div>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
