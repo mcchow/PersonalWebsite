@@ -209,32 +209,31 @@
 
         <!-- HEADER -->
         <div class="project-header">
-          <h1>Juniper Engine – Color Puzzle World</h1>
+          <h1>Offline CPU Ray Tracer</h1>
           <div class="project-meta-badges">
-            <span class="detail-badge">2025</span>
-            <span class="detail-badge">Engine & Tools Developer</span>
-            <span class="detail-badge">3D Puzzle Game on Custom Engine (C++)</span>
+            <span class="detail-badge">2026</span>
+            <span class="detail-badge">Graphics Programmer</span>
+            <span class="detail-badge">CPU Path Tracing + IBL</span>
           </div>
         </div>
 
-        <!-- VIDEO -->
-        <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;">
-            <iframe 
-            src="https://www.youtube.com/embed/a8Cokb9uSUA"
-            title="Color Puzzle World Demo"
-            style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-            </iframe>
+        <!-- IMAGE GALLERY -->
+        <div class="project-detail-section">
+          <div class="image-gallery-3">
+            <img src="images/cpu_rt_1.png" alt="CPU Ray Tracer Screenshot 1">
+            <img src="images/cpu_rt_2.png" alt="CPU Ray Tracer Screenshot 2">
+            <img src="images/cpu_rt_3.png" alt="CPU Ray Tracer Screenshot 3">
+          </div>
         </div>
 
         <!-- OVERVIEW -->
         <div class="project-detail-section">
           <h2>Overview</h2>
           <p>
-            Color Puzzle World is a 3D puzzle adventure built on a custom engine featuring skeletal animation, dynamic lighting, Jolt physics, multithreaded systems, and Lua scripting. 
-            Players manipulate color to alter their character and interact with the environment — unlocking paths, activating mechanisms, and revealing hidden solutions. 
-            Each puzzle blends physics, light, motion, and script‑driven logic to reward experimentation and creative problem‑solving.
+            A physically‑based offline CPU ray tracer implementing BVH acceleration, 
+            global illumination, soft shadows, reflections, refraction, and HDR image‑based lighting (IBL). 
+            The renderer uses a path tracing approach to simulate realistic light transport, 
+            producing high‑quality images with physically accurate shading and material behavior.
           </p>
         </div>
 
@@ -242,12 +241,13 @@
         <div class="project-detail-section">
           <h2>My Responsibilities</h2>
           <ul>
-            <li>Implemented gameplay systems using Lua scripting for puzzle logic and interactions</li>
-            <li>Integrated Jolt physics for dynamic objects, triggers, and puzzle mechanisms</li>
-            <li>Developed animation and lighting features used throughout the game</li>
-            <li>Built multithreaded systems to support real‑time simulation and rendering</li>
-            <li>Created tools and workflows for designers to author puzzles and color‑based mechanics</li>
-            <li>Designed asset import/export pipelines for Blender models, materials, and scenes</li>
+            <li>Implemented BVH acceleration structure for fast ray traversal</li>
+            <li>Developed a full path tracing pipeline with Monte Carlo sampling</li>
+            <li>Added global illumination, indirect lighting, and multi‑bounce scattering</li>
+            <li>Implemented reflections, refraction, and Fresnel‑based materials</li>
+            <li>Integrated HDR environment maps for image‑based lighting (IBL)</li>
+            <li>Built material system supporting metal, dielectric, diffuse, and emissive surfaces</li>
+            <li>Created debug visualizations for normals, albedo, and ray depth</li>
           </ul>
         </div>
 
@@ -256,11 +256,12 @@
           <h2>Technical Highlights</h2>
 
           <ul>
-            <li><strong>Gameplay & Scripting:</strong> Lua‑driven puzzle logic, color‑based state system, scriptable triggers and mechanisms</li>
-            <li><strong>Rendering:</strong> Dynamic lighting, stylized shading, real‑time material updates</li>
-            <li><strong>Physics:</strong> Jolt‑based interactions, rigid‑body puzzles, collision‑driven events</li>
-            <li><strong>Tools & Pipelines:</strong> Blender → Engine asset pipeline, scene import/export, designer‑friendly puzzle authoring tools</li>
-            <li><strong>Systems:</strong> Multithreaded update loops, engine subsystems for gameplay, physics, and rendering</li>
+            <li><strong>Path Tracing:</strong> Multi‑bounce GI, Monte Carlo sampling, Russian roulette termination</li>
+            <li><strong>Acceleration Structure:</strong> SAH‑optimized BVH for efficient ray traversal</li>
+            <li><strong>Lighting:</strong> HDR IBL, emissive materials, indirect diffuse and specular lighting</li>
+            <li><strong>Materials:</strong> Dielectric refraction, metal microfacet reflection, Lambertian diffuse</li>
+            <li><strong>Effects:</strong> Soft shadows, caustics, glossy reflections, depth‑based scattering</li>
+            <li><strong>Debug Tools:</strong> Normal buffer, albedo buffer, ray depth visualization</li>
           </ul>
         </div>
 
@@ -269,12 +270,11 @@
           <h2>Tech Stack</h2>
           <div class="tech-stack-list">
             <span class="tech-pill">C++</span>
-            <span class="tech-pill">Lua</span>
-            <span class="tech-pill">OpenGL</span>
-            <span class="tech-pill">GLSL</span>
-            <span class="tech-pill">Jolt Physics</span>
-            <span class="tech-pill">IMGUI</span>
-            <span class="tech-pill">Blender (Assets)</span>
+            <span class="tech-pill">CPU Rendering</span>
+            <span class="tech-pill">BVH</span>
+            <span class="tech-pill">Path Tracing</span>
+            <span class="tech-pill">HDR IBL</span>
+            <span class="tech-pill">Monte Carlo Sampling</span>
           </div>
         </div>
 
@@ -283,51 +283,36 @@
           <h2>Featured Components</h2>
 
           <div class="feature-card">
-            <h3>Color‑Based Puzzle System</h3>
+            <h3>BVH Acceleration Structure</h3>
             <p>
-              Designed a flexible color‑state system where player abilities, object behaviors, and puzzle logic all respond to color changes. 
-              This system drives doors, platforms, triggers, and environmental interactions.
+              Implemented a bounding volume hierarchy to drastically reduce ray–scene intersection cost, 
+              enabling complex scenes to render efficiently on the CPU.
             </p>
           </div>
 
           <div class="feature-card">
-            <h3>Lua Gameplay Scripting</h3>
+            <h3>Global Illumination & Path Tracing</h3>
             <p>
-              Built a Lua scripting layer enabling designers to define puzzle logic, triggers, animations, and object behaviors without modifying engine code.
+              Multi‑bounce indirect lighting with Monte Carlo sampling produces realistic soft lighting, 
+              color bleeding, and physically accurate shading.
             </p>
           </div>
 
           <div class="feature-card">
-            <h3>Physics‑Driven Interactions</h3>
+            <h3>Physically‑Based Materials</h3>
             <p>
-              Integrated Jolt physics to support dynamic objects, rigid‑body puzzles, collision events, and interactive mechanisms.
+              Supports dielectric refraction, metal microfacet reflection, diffuse scattering, 
+              and emissive surfaces for realistic material behavior.
             </p>
           </div>
 
           <div class="feature-card">
-            <h3>Blender Asset Pipeline</h3>
+            <h3>HDR Image‑Based Lighting</h3>
             <p>
-              Created a Blender‑to‑engine pipeline for meshes, materials, animations, and scene metadata, enabling fast iteration for designers.
+              Integrated HDR environment maps for natural lighting, reflections, and ambient illumination.
             </p>
           </div>
         </div>
 
       </section>
-    </main>
-
-    <footer>
-      <div class="footer-inner">
-        <div>© <span id="year"></span> Martin Chow. All rights reserved.</div>
-        <div class="footer-links">
-          <a href="https://github.com/YOUR_GITHUB" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener">LinkedIn</a>
-        </div>
-      </div>
-    </footer>
-  </div>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
-</body>
 </html>
