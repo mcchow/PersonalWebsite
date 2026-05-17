@@ -355,7 +355,6 @@
       let currentCategory = "all";
       let filteredProjects = [...projectsData];
       let slidesToShow = 1;
-      let slideWidth = 0;
 
       // DOM elements
       const track = document.getElementById("carouselTrack");
@@ -364,32 +363,75 @@
       const indicatorsContainer = document.getElementById("carouselIndicators");
       const filterButtons = document.querySelectorAll(".filter-btn");
 
+      // Helper: Get carousel container (parent of track)
+      function getCarouselContainer() {
+        return track ? track.parentElement : null;
+      }
+
+      // Helper: Ensure proper CSS for carousel to avoid cutting off
+      function applyCarouselStyles() {
+        const container = getCarouselContainer();
+        if (container) {
+          // Ensure overflow hidden on container to clip slides properly
+          container.style.overflow = "hidden";
+          container.style.position = "relative";
+        }
+        if (track) {
+          track.style.display = "flex";
+          track.style.transition = "transform 0.4s ease-out";
+          track.style.willChange = "transform";
+          // Remove any gaps/margins that cause misalignment
+          track.style.gap = "0";
+          track.style.margin = "0";
+          track.style.padding = "0";
+        }
+        // Apply dynamic flex basis to each slide based on slidesToShow
+        const slides = document.querySelectorAll(".carousel-slide");
+        const slidePercent = 100 / slidesToShow;
+        slides.forEach((slide) => {
+          slide.style.flex = `0 0 ${slidePercent}%`;
+          slide.style.margin = "0";
+          slide.style.padding = "0"; // Ensure no extra padding that breaks width calculation
+          slide.style.boxSizing = "border-box";
+        });
+      }
+
       function updateSlidesToShow() {
         if (window.innerWidth >= 1200) slidesToShow = 3;
         else if (window.innerWidth >= 800) slidesToShow = 2;
         else slidesToShow = 1;
+        // Re-apply styles so each slide gets correct percentage width
+        applyCarouselStyles();
       }
 
       function getTotalPages() {
+        if (filteredProjects.length === 0) return 0;
         return Math.ceil(filteredProjects.length / slidesToShow);
       }
 
+      // Update carousel position using container width for perfect alignment
       function updateCarouselPosition() {
-        if (!track || track.children.length === 0) return;
+        if (!track) return;
+        const container = getCarouselContainer();
+        if (!container) return;
 
-        // Get the actual width of one slide
-        const firstSlide = track.children[0];
-        const slideRect = firstSlide.getBoundingClientRect();
-        slideWidth = slideRect.width;
+        const totalPages = getTotalPages();
+        // Clamp current page to valid range
+        if (currentPage >= totalPages && totalPages > 0) {
+          currentPage = totalPages - 1;
+        }
+        if (currentPage < 0) currentPage = 0;
 
-        // Calculate translation: move by page number * slidesToShow * slideWidth
-        const translateX = -(currentPage * slidesToShow * slideWidth);
-
+        // Get exact width of the visible area
+        const containerWidth = container.clientWidth;
+        // Translate by full container width * page number
+        const translateX = -(currentPage * containerWidth);
         track.style.transform = `translateX(${translateX}px)`;
       }
 
       function goToPage(page) {
         const totalPages = getTotalPages();
+        if (totalPages === 0) return;
         if (page < 0) page = 0;
         if (page >= totalPages) page = totalPages - 1;
         if (page === currentPage) return;
@@ -411,10 +453,10 @@
           goToPage(currentPage - 1);
         }
       }
+
       // Helper function to normalize category for CSS class
       function getCategoryClass(category) {
         const lower = category.toLowerCase();
-        // Map variations to standard classes
         if (lower === "ai") return "ai";
         if (lower === "ue5" || lower === "ue" || lower === "unreal")
           return "ue5";
@@ -466,11 +508,13 @@
         track.innerHTML = html;
         currentPage = 0;
 
-        // Small delay to ensure DOM is ready
-        setTimeout(() => {
-          updateCarouselPosition();
-          updateIndicators();
-        }, 50);
+        // Apply critical layout styles to prevent cut-off
+        applyCarouselStyles();
+
+        // Force a reflow to ensure dimensions are correct before positioning
+        void track.offsetHeight;
+        updateCarouselPosition();
+        updateIndicators();
       }
 
       function updateIndicators() {
@@ -503,16 +547,21 @@
         renderCarousel();
       }
 
-      // Debounced resize handler
+      // Debounced resize handler - completely refresh carousel dimensions
       let resizeTimeout;
       window.addEventListener("resize", () => {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
+          const oldSlidesToShow = slidesToShow;
           updateSlidesToShow();
           const totalPages = getTotalPages();
-          if (currentPage >= totalPages) {
-            currentPage = Math.max(0, totalPages - 1);
+          if (currentPage >= totalPages && totalPages > 0) {
+            currentPage = totalPages - 1;
+          } else if (totalPages === 0) {
+            currentPage = 0;
           }
+          // Re-apply styles (flex basis) and update position
+          applyCarouselStyles();
           updateCarouselPosition();
           updateIndicators();
         }, 150);
