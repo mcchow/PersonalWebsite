@@ -73,6 +73,30 @@
     .project-page {
       max-width: 900px;
     }
+    .project-feature-image {
+      display: block;
+      width: 100%;
+      max-height: 520px;
+      object-fit: cover;
+      border-radius: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+    }
+    .project-play-link {
+      display: block;
+      width: fit-content;
+      margin: 0 auto 2rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #4fd1c5, #22c55e);
+      color: #020617;
+      font-weight: 600;
+      text-align: center;
+      transition: filter 0.2s;
+    }
+    .project-play-link:hover {
+      filter: brightness(1.05);
+    }
     .project-header {
       margin-bottom: 2rem;
     }
@@ -214,15 +238,27 @@
           <div class="project-meta-badges">
             <span class="detail-badge">Game Jam Submission</span>
             <span class="detail-badge">Developed in 24 Hours</span>
-            <span class="detail-badge"><a href="https://alkovethedev.itch.io/the-lotus-child" target="_blank" rel="noopener">Play it here</a></span>
           </div>
         </div>
+
+        <img
+          class="project-feature-image"
+          src="images/lotus-child.png"
+          alt="Lotus Child Unity puzzle-platformer"
+        />
+        <a
+          class="project-play-link"
+          href="https://anishmurthydev.itch.io/the-lilypad-child"
+          target="_blank"
+          rel="noopener"
+          >Play it here</a
+        >
 
         <!-- OVERVIEW -->
         <div class="project-detail-section">
           <h2>Overview</h2>
           <p>
-            Lotus Child is a 2D puzzle-platformer built with Unity during a rapid one-day game jam.
+            <em>Lotus Child</em> is a 2D puzzle-platformer built with Unity during a rapid one-day game jam.
             The game features a serene lilypad-themed environment where players solve spatial logic
             challenges to reunite a lost child with their guide.
           </p>

@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Prism 2 | Martin Chow Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .video-container video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <div class="hero-name">Martin Chow</div>
+        <div class="hero-title-large">Software &amp; Graphics Developer</div>
+        <div class="nav-links-center">
+          <a href="index.html#projects">Projects</a>
+          <a href="index.html#about">About</a>
+          <a href="index.html#contact">Contact</a>
+          <a href="Your_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+        </div>
+      </header>
+
+      <main>
+        <section class="section project-page">
+          <a href="index.html#projects" class="back-link">&larr; Back to Projects</a>
+
+          <div class="project-header">
+            <h1>Prism 2</h1>
+            <div class="project-meta-badges">
+              <span class="detail-badge">Under Development</span>
+              <span class="detail-badge">Unreal Engine</span>
+              <span class="detail-badge">2026</span>
+            </div>
+          </div>
+
+          <!-- VIDEO -->
+          <div class="video-container">
+            <video controls preload="metadata">
+              <source src="Prsim2_underdev.mp4" type="video/mp4" />
+              Your browser does not support the video element.
+            </video>
+          </div>
+
+          <div class="project-detail-section">
+            <h2>Overview</h2>
+            <p>
+              Prism 2 is an Unreal Engine puzzle game currently under
+              development. The project focuses on shooting puzzles and moving
+              or rotating platform interactions, challenging players to aim
+              carefully, understand each mechanism, and find a path forward.
+              Everything is created in Unreal Engine, from the gameplay systems
+              and level construction to the interactive presentation.
+            </p>
+          </div>
+
+          <div class="project-detail-section">
+            <h2>My Responsibilities</h2>
+            <ul>
+              <li>Developing the game entirely within Unreal Engine</li>
+              <li>Building shooting-based puzzle interactions for the player experience</li>
+              <li>Creating moving and rotating platforms that change how players navigate each puzzle</li>
+              <li>Creating gameplay systems, player interactions, and reusable components</li>
+              <li>Designing levels around spatial reasoning, timing, movement, and exploration</li>
+              <li>Iterating on puzzle clarity, responsiveness, and overall game feel</li>
+            </ul>
+          </div>
+
+          <div class="project-detail-section">
+            <h2>Technical Highlights</h2>
+            <ul>
+              <li><strong>Gameplay:</strong> Unreal Engine systems for player control, interaction, and progression</li>
+              <li><strong>Shooting Puzzles:</strong> Aim-based interactions that let players activate, alter, or solve parts of the environment</li>
+              <li><strong>Platform Mechanics:</strong> Moving and rotating platforms that create changing routes and timing challenges</li>
+              <li><strong>World Building:</strong> Unreal-based level construction, environmental layout, and puzzle design</li>
+              <li><strong>Iteration:</strong> Rapidly testing and refining features while the project remains under development</li>
+            </ul>
+          </div>
+
+          <div class="project-detail-section">
+            <h2>Tech Stack</h2>
+            <div class="tech-stack-list">
+              <span class="tech-pill">Unreal Engine</span>
+              <span class="tech-pill">C++</span>
+              <span class="tech-pill">Gameplay Systems</span>
+              <span class="tech-pill">Shooting Puzzles</span>
+              <span class="tech-pill">Moving Platforms</span>
+              <span class="tech-pill">Rotating Platforms</span>
+              <span class="tech-pill">Level Design</span>
+            </div>
+          </div>
+
+          <div class="project-detail-section">
+            <h2>Featured Components</h2>
+
+            <div class="feature-card">
+              <h3>Shooting Puzzles</h3>
+              <p>
+                Shooting is used as a puzzle-solving tool, letting players
+                interact with mechanisms and think carefully about timing,
+                position, and aim.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <h3>Unreal Gameplay Foundation</h3>
+              <p>
+                Core systems are developed directly in Unreal Engine to support
+                a cohesive workflow for gameplay logic, interaction, and rapid
+                iteration.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <h3>Moving and Rotating Platforms</h3>
+              <p>
+                Platforms move and rotate to change the available routes,
+                creating spatial logic and timing challenges as players work
+                through each level.
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div class="footer-inner">
+          <div>© <span id="year"></span> Martin Chow. All rights reserved.</div>
+          <div class="footer-links">
+            <a href="https://github.com/YOUR_GITHUB" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
