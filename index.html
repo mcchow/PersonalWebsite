@@ -93,6 +93,39 @@
           </aside>
         </section>
 
+        <!-- LATEST GAME -->
+        <section class="section latest-game" id="latest-game">
+          <div class="latest-game-heading">
+            <div>
+              <div class="section-kicker">Latest Game</div>
+              <h2 class="section-title" id="latestGameTitle">GAM551 BounceBack</h2>
+            </div>
+            <p id="latestGameDescription">A gameplay preview from my latest game project.</p>
+          </div>
+
+          <div class="latest-game-showcase">
+            <button class="latest-game-btn" id="latestGamePrev" type="button" aria-label="Show previous latest game">&#8592;</button>
+            <div class="latest-game-media">
+              <video
+                class="latest-game-video"
+                controls
+                preload="metadata"
+                id="latestGameVideo"
+                aria-label="GAM551 BounceBack gameplay preview"
+              >
+                <source src="GAM551%20BounceBack.mp4" type="video/mp4" />
+                Your browser does not support the video element.
+              </video>
+            </div>
+            <button class="latest-game-btn" id="latestGameNext" type="button" aria-label="Show next latest game">&#8594;</button>
+          </div>
+
+          <div class="latest-game-footer">
+            <span id="latestGameCount">1 / 2</span>
+            <a class="view-project-btn" href="project-luareeye.html" id="latestGameLink">View BounceBack Details &#8594;</a>
+          </div>
+        </section>
+
         <!-- PROJECTS -->
         <section class="section" id="projects">
           <h2 class="section-title">Projects</h2>
@@ -426,6 +459,19 @@
           image: "images/lotus-child.png",
         },
         {
+          id: "prism",
+          name: "Prism - Color Puzzle Game",
+          year: "2025",
+          role: "Game Engine Developer",
+          type: "Custom 3D Engine - Color Puzzle Game",
+          category: "engine",
+          shortDesc:
+            "A color-based 3D puzzle game built with a custom C++ and OpenGL engine, featuring collectible-driven gameplay and physics systems.",
+          techStack: "C++, OpenGL, 3D Rendering, Physics, Game Engine",
+          image:
+            "https://test627424228.wordpress.com/wp-content/uploads/2025/05/prism_2.png?w=1024",
+        },
+        {
           id: "prism-2",
           name: "Prism 2",
           year: "2026",
@@ -451,6 +497,47 @@
       const nextBtn = document.getElementById("nextBtn");
       const indicatorsContainer = document.getElementById("carouselIndicators");
       const filterButtons = document.querySelectorAll(".filter-btn");
+
+      const latestGames = [
+        {
+          title: "GAM551 BounceBack",
+          description: "A gameplay preview from my latest game project.",
+          source: "GAM551%20BounceBack.mp4",
+          link: "project-luareeye.html",
+          linkLabel: "View BounceBack Details",
+        },
+        {
+          title: "Prism - Color Puzzle Game",
+          description: "A color-driven puzzle game built with a personal C++ and OpenGL engine.",
+          source: "Prism.mp4",
+          link: "project-prism.html",
+          linkLabel: "View Prism Details",
+        },
+      ];
+      let latestGameIndex = 0;
+
+      function updateLatestGame() {
+        const game = latestGames[latestGameIndex];
+        const video = document.getElementById("latestGameVideo");
+        document.getElementById("latestGameTitle").textContent = game.title;
+        document.getElementById("latestGameDescription").textContent = game.description;
+        document.getElementById("latestGameCount").textContent = `${latestGameIndex + 1} / ${latestGames.length}`;
+        document.getElementById("latestGameLink").href = game.link;
+        document.getElementById("latestGameLink").firstChild.textContent = `${game.linkLabel} `;
+        video.setAttribute("aria-label", `${game.title} gameplay preview`);
+        video.pause();
+        video.querySelector("source").src = game.source;
+        video.load();
+      }
+
+      document.getElementById("latestGamePrev").addEventListener("click", () => {
+        latestGameIndex = (latestGameIndex - 1 + latestGames.length) % latestGames.length;
+        updateLatestGame();
+      });
+      document.getElementById("latestGameNext").addEventListener("click", () => {
+        latestGameIndex = (latestGameIndex + 1) % latestGames.length;
+        updateLatestGame();
+      });
 
       // Helper: Get carousel container (parent of track)
       function getCarouselContainer() {

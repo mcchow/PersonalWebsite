@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Prism | Martin Chow Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <div class="hero-name">Martin Chow</div>
+        <div class="hero-title-large">Software &amp; Graphics Developer</div>
+        <div class="nav-links-center">
+          <a href="index.html#projects">Projects</a>
+          <a href="index.html#about">About</a>
+          <a href="index.html#contact">Contact</a>
+          <a href="Resume.pdf" target="_blank" rel="noopener">Resume</a>
+        </div>
+      </header>
+
+      <main>
+        <section class="section project-page">
+          <a href="index.html#projects" class="back-link">&larr; Back to Projects</a>
+
+          <div class="project-header">
+            <h1>Prism</h1>
+            <div class="project-meta-badges">
+              <span class="detail-badge">Personal Game Engine</span>
+              <span class="detail-badge">C++ / OpenGL</span>
+              <span class="detail-badge">2025</span>
+            </div>
+          </div>
+
+          <div class="project-detail-image">
+            <img
+              src="https://test627424228.wordpress.com/wp-content/uploads/2025/05/prism_2.png?w=1024"
+              alt="Prism color puzzle game"
+            />
+          </div>
+
+          <div class="project-detail-section">
+            <h2>Overview</h2>
+            <p>
+              In Prism, players embark on a vibrant journey through color-coded
+              challenges. Touching color collectibles changes the character's
+              hue, and the goal is to navigate to the flag that matches the
+              current color. Strategic thinking and quick reflexes are key to
+              solving puzzles and advancing through increasingly tricky levels.
+            </p>
+          </div>
+
+          <div class="project-detail-section">
+            <h2>Game Engine Development</h2>
+            <p>
+              Utilized C++ and OpenGL to create a comprehensive game engine.
+              Designed base component classes to manage game objects and logic,
+              enabling users to develop their own games efficiently.
+            </p>
+          </div>
+
+          <div class="project-detail-section">
+            <h2>3D Rendering System</h2>
+            <p>
+              Built a robust rendering system that manages game object rendering
+              using shaders and camera views. Enabled smooth 3D lighting and
+              shadow effects for enhanced visual realism.
+            </p>
+          </div>
+
+          <div class="project-detail-section">
+            <h2>3D Physics System</h2>
+            <p>
+              Developed a 3D rigid body class supporting Oriented Bounding Box
+              (OBB), Axis-Aligned Bounding Box (AABB), and sphere collision
+              detection for accurate and efficient physics simulations.
+            </p>
+          </div>
+
+          <div class="project-detail-section">
+            <h2>Tech Stack</h2>
+            <div class="tech-stack-list">
+              <span class="tech-pill">C++</span>
+              <span class="tech-pill">OpenGL</span>
+              <span class="tech-pill">3D Rendering</span>
+              <span class="tech-pill">Shaders</span>
+              <span class="tech-pill">Game Engine Architecture</span>
+              <span class="tech-pill">Rigid Body Physics</span>
+              <span class="tech-pill">OBB / AABB Collision</span>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div class="footer-inner">
+          <div>© <span id="year"></span> Martin Chow. All rights reserved.</div>
+          <div class="footer-links">
+            <a href="https://github.com/YOUR_GITHUB" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
