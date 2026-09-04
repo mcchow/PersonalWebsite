@@ -445,6 +445,7 @@
           techStack:
             "C++, IMGUI, Inverse Kinematics, CCD, Jacobian Solver, Animation Systems",
           image: "images/ik-system.png",
+          link: "project-ik.html",
         },
         {
           id: "lotus-child",
@@ -674,7 +675,7 @@
                 .map((tech) => `<span>${tech.trim()}</span>`)
                 .join("")}
             </div>
-            <a href="project-${p.id}.html" class="view-project-btn">View Details →</a>
+            <a href="${p.link || `project-${p.id}.html`}" class="view-project-btn">View Details →</a>
           </div>
         </div>
       </div>

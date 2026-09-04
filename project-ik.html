@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Inverse Kinematics System | Martin Chow Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <div class="hero-name">Martin Chow</div>
+        <div class="hero-title-large">Software &amp; Graphics Developer</div>
+        <div class="nav-links-center">
+          <a href="index.html#projects">Projects</a>
+          <a href="index.html#about">About</a>
+          <a href="index.html#contact">Contact</a>
+          <a href="Resume.pdf" target="_blank" rel="noopener">Resume</a>
+        </div>
+      </header>
+
+      <main>
+        <section class="section project-page ik-project-page">
+          <a href="index.html#projects" class="back-link">&larr; Back to Projects</a>
+
+          <div class="project-header">
+            <h1>Inverse Kinematics System</h1>
+            <div class="project-meta-badges">
+              <span class="detail-badge">Animation Systems</span>
+              <span class="detail-badge">C++ / IMGUI</span>
+              <span class="detail-badge">2024</span>
+            </div>
+          </div>
+
+          <div class="video-container">
+            <video controls preload="metadata" playsinline aria-label="Inverse kinematics system demonstration">
+              <source src="proj3.mp4" type="video/mp4" />
+              Your browser does not support the video element.
+            </video>
+          </div>
+
+          <div class="project-detail-section">
+            <h2>Overview</h2>
+            <p>
+              A real-time inverse kinematics testing tool built on top of a custom spline editor. The project makes character posing and movement systems easy to inspect by combining interactive joint manipulation, selectable solvers, and animation path following inside the engine.
+            </p>
+          </div>
+
+          <div class="project-detail-section">
+            <h2>My Responsibilities</h2>
+            <ul>
+              <li>Implemented Cyclic Coordinate Descent (CCD) and Jacobian-based IK solvers</li>
+              <li>Built interactive controls for manipulating joints and testing end-effector targets</li>
+              <li>Integrated solver switching for comparing convergence and posing behavior in real time</li>
+              <li>Connected IK evaluation to spline path following and animation previews</li>
+              <li>Created IMGUI tooling to expose parameters and make iteration immediate</li>
+            </ul>
+          </div>
+
+          <div class="project-detail-section">
+            <h2>Technical Highlights</h2>
+            <ul>
+              <li><strong>CCD Solver:</strong> Iteratively rotates joints from the end effector toward the root to reduce target error</li>
+              <li><strong>Jacobian Solver:</strong> Uses the Jacobian relationship between joint motion and end-effector motion for responsive adjustment</li>
+              <li><strong>Editor Workflow:</strong> Real-time controls make reachability, joint behavior, and solver differences visible while editing</li>
+              <li><strong>Path Following:</strong> Spline-driven movement provides a practical test case for posing and animation blending</li>
+            </ul>
+          </div>
+
+          <div class="project-detail-section">
+            <h2>Tech Stack</h2>
+            <div class="tech-stack-list">
+              <span class="tech-pill">C++</span>
+              <span class="tech-pill">IMGUI</span>
+              <span class="tech-pill">Inverse Kinematics</span>
+              <span class="tech-pill">CCD</span>
+              <span class="tech-pill">Jacobian Solver</span>
+              <span class="tech-pill">Animation Systems</span>
+              <span class="tech-pill">Spline Editor</span>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div class="footer-inner">
+          <div>&copy; <span id="year"></span> Martin Chow. All rights reserved.</div>
+          <div class="footer-links">
+            <a href="https://github.com/YOUR_GITHUB" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
